@@ -36,9 +36,17 @@ wired, but needs a human-supplied credential or a Claude restart to verify live.
 - `scripts/opusclip_adapter.mjs`: SIMULATION scoring (deterministic, rises per attempt), writes
   `qa/<id>/opusclip.md`, NEVER publishes. Smoke-tested 55→64→73 across attempts → HUMAN-REVIEW at cap.
 - Gates set in WORKFLOW.md: PUBLISH_THRESHOLD=75, REGEN_CAP=2. Real OpusClip MCP path documented (agentic).
-## Phase 6 — Mode A (inbox/) path ⏳
-## Phase 7 — Supervised runs + forced regeneration ⏳
-## Phase 8 — Scout (Mode C) ⏳
+## Phase 6 — Mode A (inbox/) path ✅
+- `scripts/mode_a_ingest.mjs`: source + sidecar transcript → brief (original audio kept, footage
+  as scene bg, captions from transcript). Missing transcript → DEFERRED (exit 3), never crashed.
+
+## Phase 7 — Supervised runs + forced regeneration ✅
+- Mode B (demo-003): natural improve loop 66→75 (1 regen) → would-auto-publish (simulation).
+- Mode A (inbox-talk): forced threshold 999 → 66→75→84, cap reached → HUMAN REVIEW, published=false.
+
+## Phase 8 — Scout (Mode C) ✅
+- `scripts/scout.sh` (headless `claude -p`, ≤5 drafts, always needs_approval) +
+  `scripts/promote.mjs` (human gate). Gate proven: unpromoted draft invisible to production.
 ## Phase 9 — Self-healing & self-learning ✅ (infra built; demonstrated in Phase 7/10)
 - `scripts/preflight.sh` (toolchain+service health, degrades to fallback, never crashes) — tested.
 - `logs/failures.jsonl` + `logs/metrics.jsonl` via `scripts/record.mjs`; retro.md per run.
@@ -47,7 +55,12 @@ wired, but needs a human-supplied credential or a Claude restart to verify live.
 - `scripts/consolidate.sh` → `proposals/*.md` flagged needs_approval (loop proposes, human applies) — tested.
 - `scripts/make_video.sh` rewritten as the v5 orchestrator (preflight→mode→adapters→render→QA→
   improve loop→gate→metrics/retro). Descript/OpusClip use fallback/simulation in this path.
-## Phase 10 — Headless + final checklist ⏳
+## Phase 10 — Headless + final checklist ✅
+- `run_loop.sh` v5: preflight first, mcp__opusclip in allowlist, --max-turns 150, cron notes.
+- One fully headless deterministic run (demo-001): 64→73→82, published=true (simulation);
+  queue/report/descript/opusclip/retro/metrics/production.log all written.
+- Stop-hook re-verified: blocks FAIL (exit 2), allows clean (exit 0).
+- Consolidation over 3 runs: avg best 80.3, publish rate 67% → proposal in proposals/ (needs_approval).
 
 ## Human inputs still needed
 1. **DESCRIPT_API_TOKEN** (dev portal, scoped to a dedicated Drive) — also confirm API **and AI-voice** availability on the plan.

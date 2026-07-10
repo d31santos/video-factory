@@ -1,5 +1,6 @@
 {
-  "hook": "3 ways AI saves clinicians time every day",
+  "mode": "B",
+  "hook": "Watch before your next AI rollout",
   "scenes": [
     {
       "text": "3 ways AI saves clinicians time every day",
@@ -593,5 +594,12 @@
     "accent2": "#00E0B8",
     "captionBackdrop": "rgba(0,0,0,0.55)",
     "fontFamily": "Inter, \"Segoe UI\", system-ui, -apple-system, \"Helvetica Neue\", Arial, sans-serif"
-  }
+  },
+  "format": "vertical",
+  "assetLog": [
+    {
+      "file": "audio/demo-001.mp3",
+      "provenance": "edge-tts (fallback voice+transcript)"
+    }
+  ]
 }
