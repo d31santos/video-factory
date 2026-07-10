@@ -39,7 +39,14 @@ wired, but needs a human-supplied credential or a Claude restart to verify live.
 ## Phase 6 — Mode A (inbox/) path ⏳
 ## Phase 7 — Supervised runs + forced regeneration ⏳
 ## Phase 8 — Scout (Mode C) ⏳
-## Phase 9 — Self-healing & self-learning ⏳
+## Phase 9 — Self-healing & self-learning ✅ (infra built; demonstrated in Phase 7/10)
+- `scripts/preflight.sh` (toolchain+service health, degrades to fallback, never crashes) — tested.
+- `logs/failures.jsonl` + `logs/metrics.jsonl` via `scripts/record.mjs`; retro.md per run.
+- `PLAYBOOK.md` (symptom→fix, seeded from PDF §13 + this build's fixes P11–P15).
+- `HEURISTICS.md` (read before scripting; binding, never above RULES).
+- `scripts/consolidate.sh` → `proposals/*.md` flagged needs_approval (loop proposes, human applies) — tested.
+- `scripts/make_video.sh` rewritten as the v5 orchestrator (preflight→mode→adapters→render→QA→
+  improve loop→gate→metrics/retro). Descript/OpusClip use fallback/simulation in this path.
 ## Phase 10 — Headless + final checklist ⏳
 
 ## Human inputs still needed

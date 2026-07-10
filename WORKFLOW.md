@@ -93,3 +93,12 @@ writes `qa/<id>/opusclip.md`, and NEVER publishes. Simulation is never a real pu
 
 **PLACEHOLDER to confirm live in Phase 5 (needs an OpusClip account):** the exact field carrying
 the per-clip virality score, how captions attach, and which platforms are connected.
+
+## §Mode A details (inbox/)
+- Agentic path: `import_media` the source into Descript → transcript + segments → mark keep/cut
+  candidates in the brief → downstream identical to Mode B.
+- Deterministic path (`scripts/mode_a_ingest.mjs`): needs a sidecar transcript
+  `inbox/<name>.transcript.json` (same `{word,startMs,endMs}` shape). It extracts the original
+  audio (kept as `audioSrc`), uses the source footage as the scene background (its own motion
+  satisfies R5), and takes captions (R7) from the sidecar. If the sidecar is missing and no
+  Descript token is present, the item is **DEFERRED** (exit 3), never crashed.

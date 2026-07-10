@@ -18,9 +18,11 @@ const id = args.id;
 const captionsPath = args.captions;
 const audioSrc = args.audio; // e.g. "audio/demo-001.mp3" (relative to public/)
 const outPath = args.out;
+const format = args.format ?? "vertical"; // landscape | vertical | square
+const hookOverride = args.hook ?? null;   // improve-loop revisions pass a new hook here
 if (!id || !captionsPath || !audioSrc || !outPath) {
   console.error(
-    "usage: build_brief.mjs --id <id> --captions <json> --audio <path> --out <json>"
+    "usage: build_brief.mjs --id <id> --captions <json> --audio <path> --out <json> [--format] [--hook]"
   );
   process.exit(1);
 }
@@ -66,15 +68,18 @@ const scenes = sceneTexts.map((text, i) => ({
 }));
 
 const brief = {
-  hook: topic.title,
+  mode: "B",
+  hook: hookOverride ?? topic.title,
   scenes,
   cta: topic.cta ?? "Follow for more",
   captions,
   audioSrc,
   brand,
+  format,
+  assetLog: [{ file: audioSrc, provenance: "edge-tts (fallback voice+transcript)" }],
 };
 
 writeFileSync(outPath, JSON.stringify(brief, null, 2));
 console.log(
-  `build_brief: wrote ${outPath} — ${scenes.length} scenes, ${captions.length} words, ~${totalSec}s`
+  `build_brief: wrote ${outPath} — ${scenes.length} scenes, ${captions.length} words, ~${totalSec}s, format=${format}`
 );
