@@ -1,0 +1,18 @@
+{
+  "video": "out/demo-003.mp4",
+  "probed": {
+    "width": 1080,
+    "height": 1920,
+    "vcodec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": 30.000,
+    "duration_s": 43.882667,
+    "has_audio": true,
+    "acodec": "aac"
+  },
+  "rules": {
+    "R1": "PASS",
+    "R2": "PASS",
+    "R3": "PASS"
+  }
+}

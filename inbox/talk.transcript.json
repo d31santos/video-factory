@@ -1,0 +1,337 @@
+[
+  {
+    "word": "Here's",
+    "startMs": 100,
+    "endMs": 412
+  },
+  {
+    "word": "a",
+    "startMs": 437,
+    "endMs": 500
+  },
+  {
+    "word": "quick",
+    "startMs": 525,
+    "endMs": 787
+  },
+  {
+    "word": "demo",
+    "startMs": 800,
+    "endMs": 1162
+  },
+  {
+    "word": "of",
+    "startMs": 1175,
+    "endMs": 1275
+  },
+  {
+    "word": "repurposing",
+    "startMs": 1300,
+    "endMs": 2075
+  },
+  {
+    "word": "This",
+    "startMs": 2950,
+    "endMs": 3212
+  },
+  {
+    "word": "clip",
+    "startMs": 3225,
+    "endMs": 3462
+  },
+  {
+    "word": "was",
+    "startMs": 3487,
+    "endMs": 3637
+  },
+  {
+    "word": "dropped",
+    "startMs": 3662,
+    "endMs": 4000
+  },
+  {
+    "word": "into",
+    "startMs": 4012,
+    "endMs": 4175
+  },
+  {
+    "word": "the",
+    "startMs": 4200,
+    "endMs": 4312
+  },
+  {
+    "word": "inbox",
+    "startMs": 4337,
+    "endMs": 4825
+  },
+  {
+    "word": "folder",
+    "startMs": 4850,
+    "endMs": 5262
+  },
+  {
+    "word": "as",
+    "startMs": 5275,
+    "endMs": 5400
+  },
+  {
+    "word": "existing",
+    "startMs": 5425,
+    "endMs": 5925
+  },
+  {
+    "word": "footage",
+    "startMs": 5937,
+    "endMs": 6425
+  },
+  {
+    "word": "The",
+    "startMs": 7300,
+    "endMs": 7437
+  },
+  {
+    "word": "pipeline",
+    "startMs": 7462,
+    "endMs": 7900
+  },
+  {
+    "word": "pulled",
+    "startMs": 7925,
+    "endMs": 8187
+  },
+  {
+    "word": "its",
+    "startMs": 8212,
+    "endMs": 8337
+  },
+  {
+    "word": "transcript",
+    "startMs": 8350,
+    "endMs": 8987
+  },
+  {
+    "word": "kept",
+    "startMs": 9125,
+    "endMs": 9350
+  },
+  {
+    "word": "the",
+    "startMs": 9362,
+    "endMs": 9450
+  },
+  {
+    "word": "original",
+    "startMs": 9462,
+    "endMs": 9937
+  },
+  {
+    "word": "audio",
+    "startMs": 9962,
+    "endMs": 10362
+  },
+  {
+    "word": "and",
+    "startMs": 10550,
+    "endMs": 10712
+  },
+  {
+    "word": "rebuilt",
+    "startMs": 10737,
+    "endMs": 11112
+  },
+  {
+    "word": "it",
+    "startMs": 11137,
+    "endMs": 11262
+  },
+  {
+    "word": "as",
+    "startMs": 11287,
+    "endMs": 11412
+  },
+  {
+    "word": "a",
+    "startMs": 11437,
+    "endMs": 11500
+  },
+  {
+    "word": "captioned",
+    "startMs": 11525,
+    "endMs": 11900
+  },
+  {
+    "word": "short",
+    "startMs": 11912,
+    "endMs": 12325
+  },
+  {
+    "word": "In",
+    "startMs": 13200,
+    "endMs": 13375
+  },
+  {
+    "word": "the",
+    "startMs": 13400,
+    "endMs": 13500
+  },
+  {
+    "word": "real",
+    "startMs": 13525,
+    "endMs": 13762
+  },
+  {
+    "word": "system",
+    "startMs": 13787,
+    "endMs": 14250
+  },
+  {
+    "word": "Descript",
+    "startMs": 14425,
+    "endMs": 14925
+  },
+  {
+    "word": "does",
+    "startMs": 14950,
+    "endMs": 15137
+  },
+  {
+    "word": "the",
+    "startMs": 15162,
+    "endMs": 15262
+  },
+  {
+    "word": "transcription",
+    "startMs": 15287,
+    "endMs": 16000
+  },
+  {
+    "word": "automatically",
+    "startMs": 16025,
+    "endMs": 16850
+  },
+  {
+    "word": "Here",
+    "startMs": 17737,
+    "endMs": 18037
+  },
+  {
+    "word": "a",
+    "startMs": 18225,
+    "endMs": 18287
+  },
+  {
+    "word": "sidecar",
+    "startMs": 18312,
+    "endMs": 18800
+  },
+  {
+    "word": "transcript",
+    "startMs": 18825,
+    "endMs": 19400
+  },
+  {
+    "word": "stands",
+    "startMs": 19425,
+    "endMs": 19800
+  },
+  {
+    "word": "in",
+    "startMs": 19825,
+    "endMs": 20100
+  },
+  {
+    "word": "Either",
+    "startMs": 20987,
+    "endMs": 21287
+  },
+  {
+    "word": "way",
+    "startMs": 21300,
+    "endMs": 21537
+  },
+  {
+    "word": "the",
+    "startMs": 21725,
+    "endMs": 21837
+  },
+  {
+    "word": "footage",
+    "startMs": 21862,
+    "endMs": 22175
+  },
+  {
+    "word": "becomes",
+    "startMs": 22200,
+    "endMs": 22562
+  },
+  {
+    "word": "a",
+    "startMs": 22587,
+    "endMs": 22650
+  },
+  {
+    "word": "scored",
+    "startMs": 22675,
+    "endMs": 23100
+  },
+  {
+    "word": "captioned",
+    "startMs": 23250,
+    "endMs": 23675
+  },
+  {
+    "word": "clip",
+    "startMs": 23687,
+    "endMs": 23975
+  },
+  {
+    "word": "ready",
+    "startMs": 24212,
+    "endMs": 24437
+  },
+  {
+    "word": "for",
+    "startMs": 24462,
+    "endMs": 24612
+  },
+  {
+    "word": "review",
+    "startMs": 24625,
+    "endMs": 25062
+  },
+  {
+    "word": "That",
+    "startMs": 25950,
+    "endMs": 26187
+  },
+  {
+    "word": "is",
+    "startMs": 26212,
+    "endMs": 26337
+  },
+  {
+    "word": "mode",
+    "startMs": 26362,
+    "endMs": 26600
+  },
+  {
+    "word": "A",
+    "startMs": 26625,
+    "endMs": 26800
+  },
+  {
+    "word": "repurposing",
+    "startMs": 27037,
+    "endMs": 27712
+  },
+  {
+    "word": "in",
+    "startMs": 27737,
+    "endMs": 27825
+  },
+  {
+    "word": "action",
+    "startMs": 27837,
+    "endMs": 28275
+  }
+]

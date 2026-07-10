@@ -26,6 +26,19 @@
       ],
       "cta": "Save this before your next AI rollout",
       "tone": "energetic, direct, plain-spoken"
+    },
+    {
+      "id": "demo-003",
+      "status": "done",
+      "title": "Why your AI notes still need a human check",
+      "angle": "Trust-but-verify. AI drafts fast, humans catch what matters.",
+      "keyPoints": [
+        "AI drafts the note in seconds",
+        "It can still miss context and nuance",
+        "A ten-second human review catches the gaps"
+      ],
+      "cta": "Follow for safe AI workflows",
+      "tone": "energetic, direct, plain-spoken"
     }
   ]
 }
