@@ -1,0 +1,31 @@
+{
+  "_comment": "PLACEHOLDER topics — replace title/angle/keyPoints with your real niche before a production run. status: pending | in_progress | done | blocked. The factory picks the first 'pending' entry.",
+  "topics": [
+    {
+      "id": "demo-001",
+      "status": "in_progress",
+      "title": "3 ways AI saves clinicians time every day",
+      "angle": "Practical, non-hypey. Concrete tasks AI already handles well.",
+      "keyPoints": [
+        "Drafting visit summaries from notes",
+        "Triaging routine patient messages",
+        "Surfacing relevant guidelines at the point of care"
+      ],
+      "cta": "Follow for one practical AI workflow a day",
+      "tone": "energetic, direct, plain-spoken"
+    },
+    {
+      "id": "demo-002",
+      "status": "done",
+      "title": "The one AI mistake that costs clinics hours",
+      "angle": "Cautionary but constructive — using AI without verification loops.",
+      "keyPoints": [
+        "Never ship AI output unchecked",
+        "Build a human review step into every workflow",
+        "Measure time saved, not just tasks automated"
+      ],
+      "cta": "Save this before your next AI rollout",
+      "tone": "energetic, direct, plain-spoken"
+    }
+  ]
+}

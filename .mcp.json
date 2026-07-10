@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "remotion": {
+      "command": "pnpm",
+      "args": ["dlx", "@remotion/mcp@latest"]
+    },
+    "descript": {
+      "command": "pnpm",
+      "args": ["dlx", "@t-campbell18/descript-mcp"],
+      "env": { "DESCRIPT_API_TOKEN": "${DESCRIPT_API_TOKEN}" }
+    },
+    "opusclip": {
+      "command": "pnpm",
+      "args": ["dlx", "@opusclip/mcp"]
+    }
+  }
+}

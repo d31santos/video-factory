@@ -1,0 +1,612 @@
+[
+  {
+    "word": "Here's",
+    "startMs": 100,
+    "endMs": 412
+  },
+  {
+    "word": "the",
+    "startMs": 425,
+    "endMs": 537
+  },
+  {
+    "word": "one",
+    "startMs": 550,
+    "endMs": 800
+  },
+  {
+    "word": "AI",
+    "startMs": 812,
+    "endMs": 1125
+  },
+  {
+    "word": "mistake",
+    "startMs": 1137,
+    "endMs": 1650
+  },
+  {
+    "word": "that",
+    "startMs": 1662,
+    "endMs": 1825
+  },
+  {
+    "word": "quietly",
+    "startMs": 1837,
+    "endMs": 2312
+  },
+  {
+    "word": "costs",
+    "startMs": 2325,
+    "endMs": 2762
+  },
+  {
+    "word": "clinics",
+    "startMs": 2775,
+    "endMs": 3187
+  },
+  {
+    "word": "hours",
+    "startMs": 3200,
+    "endMs": 3625
+  },
+  {
+    "word": "every",
+    "startMs": 3637,
+    "endMs": 3887
+  },
+  {
+    "word": "week",
+    "startMs": 3900,
+    "endMs": 4337
+  },
+  {
+    "word": "A",
+    "startMs": 5200,
+    "endMs": 5337
+  },
+  {
+    "word": "team",
+    "startMs": 5350,
+    "endMs": 5662
+  },
+  {
+    "word": "rolls",
+    "startMs": 5675,
+    "endMs": 5962
+  },
+  {
+    "word": "out",
+    "startMs": 5975,
+    "endMs": 6150
+  },
+  {
+    "word": "a",
+    "startMs": 6162,
+    "endMs": 6200
+  },
+  {
+    "word": "shiny",
+    "startMs": 6212,
+    "endMs": 6575
+  },
+  {
+    "word": "new",
+    "startMs": 6587,
+    "endMs": 6775
+  },
+  {
+    "word": "tool",
+    "startMs": 6787,
+    "endMs": 7175
+  },
+  {
+    "word": "and",
+    "startMs": 7375,
+    "endMs": 7475
+  },
+  {
+    "word": "then",
+    "startMs": 7487,
+    "endMs": 7712
+  },
+  {
+    "word": "trusts",
+    "startMs": 7725,
+    "endMs": 8150
+  },
+  {
+    "word": "its",
+    "startMs": 8162,
+    "endMs": 8312
+  },
+  {
+    "word": "output",
+    "startMs": 8325,
+    "endMs": 8725
+  },
+  {
+    "word": "blind",
+    "startMs": 8737,
+    "endMs": 9250
+  },
+  {
+    "word": "The",
+    "startMs": 10112,
+    "endMs": 10287
+  },
+  {
+    "word": "fix",
+    "startMs": 10300,
+    "endMs": 10587
+  },
+  {
+    "word": "is",
+    "startMs": 10600,
+    "endMs": 10737
+  },
+  {
+    "word": "simple",
+    "startMs": 10750,
+    "endMs": 11162
+  },
+  {
+    "word": "but",
+    "startMs": 11287,
+    "endMs": 11425
+  },
+  {
+    "word": "it's",
+    "startMs": 11437,
+    "endMs": 11575
+  },
+  {
+    "word": "easy",
+    "startMs": 11587,
+    "endMs": 11850
+  },
+  {
+    "word": "to",
+    "startMs": 11862,
+    "endMs": 11937
+  },
+  {
+    "word": "skip",
+    "startMs": 11950,
+    "endMs": 12437
+  },
+  {
+    "word": "First",
+    "startMs": 13300,
+    "endMs": 13825
+  },
+  {
+    "word": "never",
+    "startMs": 14000,
+    "endMs": 14337
+  },
+  {
+    "word": "ship",
+    "startMs": 14350,
+    "endMs": 14637
+  },
+  {
+    "word": "AI",
+    "startMs": 14650,
+    "endMs": 15025
+  },
+  {
+    "word": "output",
+    "startMs": 15037,
+    "endMs": 15462
+  },
+  {
+    "word": "unchecked",
+    "startMs": 15475,
+    "endMs": 16150
+  },
+  {
+    "word": "Treat",
+    "startMs": 17012,
+    "endMs": 17350
+  },
+  {
+    "word": "every",
+    "startMs": 17362,
+    "endMs": 17612
+  },
+  {
+    "word": "draft",
+    "startMs": 17625,
+    "endMs": 18025
+  },
+  {
+    "word": "as",
+    "startMs": 18037,
+    "endMs": 18112
+  },
+  {
+    "word": "a",
+    "startMs": 18125,
+    "endMs": 18200
+  },
+  {
+    "word": "first",
+    "startMs": 18212,
+    "endMs": 18550
+  },
+  {
+    "word": "pass",
+    "startMs": 18562,
+    "endMs": 18975
+  },
+  {
+    "word": "not",
+    "startMs": 19225,
+    "endMs": 19462
+  },
+  {
+    "word": "a",
+    "startMs": 19475,
+    "endMs": 19525
+  },
+  {
+    "word": "final",
+    "startMs": 19537,
+    "endMs": 19912
+  },
+  {
+    "word": "answer",
+    "startMs": 19925,
+    "endMs": 20412
+  },
+  {
+    "word": "Second",
+    "startMs": 21275,
+    "endMs": 21812
+  },
+  {
+    "word": "build",
+    "startMs": 22062,
+    "endMs": 22325
+  },
+  {
+    "word": "a",
+    "startMs": 22337,
+    "endMs": 22362
+  },
+  {
+    "word": "human",
+    "startMs": 22375,
+    "endMs": 22750
+  },
+  {
+    "word": "review",
+    "startMs": 22762,
+    "endMs": 23112
+  },
+  {
+    "word": "step",
+    "startMs": 23125,
+    "endMs": 23450
+  },
+  {
+    "word": "into",
+    "startMs": 23462,
+    "endMs": 23675
+  },
+  {
+    "word": "every",
+    "startMs": 23687,
+    "endMs": 23975
+  },
+  {
+    "word": "workflow",
+    "startMs": 23987,
+    "endMs": 24612
+  },
+  {
+    "word": "One",
+    "startMs": 25487,
+    "endMs": 25812
+  },
+  {
+    "word": "person",
+    "startMs": 25825,
+    "endMs": 26262
+  },
+  {
+    "word": "confirms",
+    "startMs": 26275,
+    "endMs": 26825
+  },
+  {
+    "word": "before",
+    "startMs": 26837,
+    "endMs": 27237
+  },
+  {
+    "word": "anything",
+    "startMs": 27250,
+    "endMs": 27687
+  },
+  {
+    "word": "reaches",
+    "startMs": 27700,
+    "endMs": 28000
+  },
+  {
+    "word": "a",
+    "startMs": 28012,
+    "endMs": 28075
+  },
+  {
+    "word": "patient",
+    "startMs": 28087,
+    "endMs": 28612
+  },
+  {
+    "word": "or",
+    "startMs": 28625,
+    "endMs": 28775
+  },
+  {
+    "word": "a",
+    "startMs": 28787,
+    "endMs": 28837
+  },
+  {
+    "word": "chart",
+    "startMs": 28850,
+    "endMs": 29325
+  },
+  {
+    "word": "Third",
+    "startMs": 30187,
+    "endMs": 30612
+  },
+  {
+    "word": "measure",
+    "startMs": 30800,
+    "endMs": 31125
+  },
+  {
+    "word": "the",
+    "startMs": 31137,
+    "endMs": 31237
+  },
+  {
+    "word": "time",
+    "startMs": 31250,
+    "endMs": 31525
+  },
+  {
+    "word": "you",
+    "startMs": 31537,
+    "endMs": 31662
+  },
+  {
+    "word": "actually",
+    "startMs": 31675,
+    "endMs": 32150
+  },
+  {
+    "word": "save",
+    "startMs": 32162,
+    "endMs": 32600
+  },
+  {
+    "word": "not",
+    "startMs": 32825,
+    "endMs": 33062
+  },
+  {
+    "word": "just",
+    "startMs": 33075,
+    "endMs": 33287
+  },
+  {
+    "word": "the",
+    "startMs": 33300,
+    "endMs": 33387
+  },
+  {
+    "word": "tasks",
+    "startMs": 33400,
+    "endMs": 33812
+  },
+  {
+    "word": "you",
+    "startMs": 33825,
+    "endMs": 33925
+  },
+  {
+    "word": "automate",
+    "startMs": 33937,
+    "endMs": 34587
+  },
+  {
+    "word": "If",
+    "startMs": 35450,
+    "endMs": 35625
+  },
+  {
+    "word": "a",
+    "startMs": 35637,
+    "endMs": 35725
+  },
+  {
+    "word": "tool",
+    "startMs": 35737,
+    "endMs": 36075
+  },
+  {
+    "word": "adds",
+    "startMs": 36087,
+    "endMs": 36375
+  },
+  {
+    "word": "review",
+    "startMs": 36387,
+    "endMs": 36700
+  },
+  {
+    "word": "work",
+    "startMs": 36712,
+    "endMs": 37025
+  },
+  {
+    "word": "it",
+    "startMs": 37287,
+    "endMs": 37425
+  },
+  {
+    "word": "isn't",
+    "startMs": 37437,
+    "endMs": 37712
+  },
+  {
+    "word": "really",
+    "startMs": 37725,
+    "endMs": 37975
+  },
+  {
+    "word": "saving",
+    "startMs": 37987,
+    "endMs": 38350
+  },
+  {
+    "word": "you",
+    "startMs": 38362,
+    "endMs": 38487
+  },
+  {
+    "word": "anything",
+    "startMs": 38500,
+    "endMs": 39087
+  },
+  {
+    "word": "Do",
+    "startMs": 39962,
+    "endMs": 40175
+  },
+  {
+    "word": "these",
+    "startMs": 40187,
+    "endMs": 40437
+  },
+  {
+    "word": "three",
+    "startMs": 40450,
+    "endMs": 40662
+  },
+  {
+    "word": "things",
+    "startMs": 40675,
+    "endMs": 41137
+  },
+  {
+    "word": "and",
+    "startMs": 41300,
+    "endMs": 41475
+  },
+  {
+    "word": "AI",
+    "startMs": 41487,
+    "endMs": 41900
+  },
+  {
+    "word": "becomes",
+    "startMs": 41912,
+    "endMs": 42312
+  },
+  {
+    "word": "a",
+    "startMs": 42325,
+    "endMs": 42387
+  },
+  {
+    "word": "reliable",
+    "startMs": 42400,
+    "endMs": 42937
+  },
+  {
+    "word": "teammate",
+    "startMs": 42950,
+    "endMs": 43437
+  },
+  {
+    "word": "instead",
+    "startMs": 43450,
+    "endMs": 43837
+  },
+  {
+    "word": "of",
+    "startMs": 43850,
+    "endMs": 43900
+  },
+  {
+    "word": "a",
+    "startMs": 43912,
+    "endMs": 43975
+  },
+  {
+    "word": "risk",
+    "startMs": 43987,
+    "endMs": 44487
+  },
+  {
+    "word": "Save",
+    "startMs": 45350,
+    "endMs": 45737
+  },
+  {
+    "word": "this",
+    "startMs": 45750,
+    "endMs": 45950
+  },
+  {
+    "word": "before",
+    "startMs": 45962,
+    "endMs": 46312
+  },
+  {
+    "word": "your",
+    "startMs": 46325,
+    "endMs": 46437
+  },
+  {
+    "word": "next",
+    "startMs": 46450,
+    "endMs": 46812
+  },
+  {
+    "word": "AI",
+    "startMs": 46825,
+    "endMs": 47075
+  },
+  {
+    "word": "rollout",
+    "startMs": 47087,
+    "endMs": 47600
+  },
+  {
+    "word": "and",
+    "startMs": 47837,
+    "endMs": 47937
+  },
+  {
+    "word": "follow",
+    "startMs": 47950,
+    "endMs": 48312
+  },
+  {
+    "word": "for",
+    "startMs": 48325,
+    "endMs": 48462
+  },
+  {
+    "word": "more",
+    "startMs": 48475,
+    "endMs": 48900
+  }
+]

@@ -1,0 +1,562 @@
+[
+  {
+    "word": "Here's",
+    "startMs": 100,
+    "endMs": 425
+  },
+  {
+    "word": "how",
+    "startMs": 437,
+    "endMs": 625
+  },
+  {
+    "word": "AI",
+    "startMs": 637,
+    "endMs": 1150
+  },
+  {
+    "word": "already",
+    "startMs": 1162,
+    "endMs": 1587
+  },
+  {
+    "word": "saves",
+    "startMs": 1600,
+    "endMs": 1975
+  },
+  {
+    "word": "clinicians",
+    "startMs": 1987,
+    "endMs": 2562
+  },
+  {
+    "word": "real",
+    "startMs": 2575,
+    "endMs": 2775
+  },
+  {
+    "word": "time",
+    "startMs": 2787,
+    "endMs": 3125
+  },
+  {
+    "word": "every",
+    "startMs": 3362,
+    "endMs": 3600
+  },
+  {
+    "word": "single",
+    "startMs": 3612,
+    "endMs": 3950
+  },
+  {
+    "word": "day",
+    "startMs": 3962,
+    "endMs": 4337
+  },
+  {
+    "word": "First",
+    "startMs": 5212,
+    "endMs": 5712
+  },
+  {
+    "word": "documentation",
+    "startMs": 5925,
+    "endMs": 6937
+  },
+  {
+    "word": "AI",
+    "startMs": 7800,
+    "endMs": 8150
+  },
+  {
+    "word": "drafts",
+    "startMs": 8162,
+    "endMs": 8600
+  },
+  {
+    "word": "your",
+    "startMs": 8612,
+    "endMs": 8725
+  },
+  {
+    "word": "visit",
+    "startMs": 8737,
+    "endMs": 9062
+  },
+  {
+    "word": "summary",
+    "startMs": 9075,
+    "endMs": 9487
+  },
+  {
+    "word": "straight",
+    "startMs": 9500,
+    "endMs": 9862
+  },
+  {
+    "word": "from",
+    "startMs": 9875,
+    "endMs": 10012
+  },
+  {
+    "word": "your",
+    "startMs": 10025,
+    "endMs": 10125
+  },
+  {
+    "word": "notes",
+    "startMs": 10137,
+    "endMs": 10550
+  },
+  {
+    "word": "so",
+    "startMs": 10825,
+    "endMs": 10925
+  },
+  {
+    "word": "you",
+    "startMs": 10937,
+    "endMs": 11100
+  },
+  {
+    "word": "review",
+    "startMs": 11112,
+    "endMs": 11475
+  },
+  {
+    "word": "instead",
+    "startMs": 11487,
+    "endMs": 11862
+  },
+  {
+    "word": "of",
+    "startMs": 11875,
+    "endMs": 11962
+  },
+  {
+    "word": "type",
+    "startMs": 11975,
+    "endMs": 12437
+  },
+  {
+    "word": "Second",
+    "startMs": 13300,
+    "endMs": 13850
+  },
+  {
+    "word": "your",
+    "startMs": 14025,
+    "endMs": 14175
+  },
+  {
+    "word": "inbox",
+    "startMs": 14187,
+    "endMs": 14925
+  },
+  {
+    "word": "It",
+    "startMs": 15787,
+    "endMs": 15975
+  },
+  {
+    "word": "triages",
+    "startMs": 15987,
+    "endMs": 16562
+  },
+  {
+    "word": "routine",
+    "startMs": 16575,
+    "endMs": 16975
+  },
+  {
+    "word": "patient",
+    "startMs": 16987,
+    "endMs": 17337
+  },
+  {
+    "word": "messages",
+    "startMs": 17350,
+    "endMs": 17937
+  },
+  {
+    "word": "flags",
+    "startMs": 18200,
+    "endMs": 18587
+  },
+  {
+    "word": "what's",
+    "startMs": 18600,
+    "endMs": 18800
+  },
+  {
+    "word": "urgent",
+    "startMs": 18812,
+    "endMs": 19262
+  },
+  {
+    "word": "and",
+    "startMs": 19562,
+    "endMs": 19675
+  },
+  {
+    "word": "drafts",
+    "startMs": 19687,
+    "endMs": 20112
+  },
+  {
+    "word": "safe",
+    "startMs": 20125,
+    "endMs": 20387
+  },
+  {
+    "word": "replies",
+    "startMs": 20400,
+    "endMs": 20875
+  },
+  {
+    "word": "for",
+    "startMs": 20887,
+    "endMs": 21025
+  },
+  {
+    "word": "you",
+    "startMs": 21037,
+    "endMs": 21200
+  },
+  {
+    "word": "to",
+    "startMs": 21212,
+    "endMs": 21350
+  },
+  {
+    "word": "approve",
+    "startMs": 21362,
+    "endMs": 21937
+  },
+  {
+    "word": "Third",
+    "startMs": 22800,
+    "endMs": 23200
+  },
+  {
+    "word": "decisions",
+    "startMs": 23412,
+    "endMs": 24200
+  },
+  {
+    "word": "It",
+    "startMs": 25062,
+    "endMs": 25262
+  },
+  {
+    "word": "surfaces",
+    "startMs": 25275,
+    "endMs": 25837
+  },
+  {
+    "word": "the",
+    "startMs": 25850,
+    "endMs": 25962
+  },
+  {
+    "word": "right",
+    "startMs": 25975,
+    "endMs": 26212
+  },
+  {
+    "word": "guideline",
+    "startMs": 26225,
+    "endMs": 26737
+  },
+  {
+    "word": "at",
+    "startMs": 26750,
+    "endMs": 26812
+  },
+  {
+    "word": "the",
+    "startMs": 26825,
+    "endMs": 26900
+  },
+  {
+    "word": "exact",
+    "startMs": 26912,
+    "endMs": 27400
+  },
+  {
+    "word": "moment",
+    "startMs": 27412,
+    "endMs": 27750
+  },
+  {
+    "word": "you",
+    "startMs": 27762,
+    "endMs": 27862
+  },
+  {
+    "word": "need",
+    "startMs": 27875,
+    "endMs": 28087
+  },
+  {
+    "word": "it",
+    "startMs": 28100,
+    "endMs": 28287
+  },
+  {
+    "word": "without",
+    "startMs": 28600,
+    "endMs": 28975
+  },
+  {
+    "word": "digging",
+    "startMs": 28987,
+    "endMs": 29337
+  },
+  {
+    "word": "through",
+    "startMs": 29350,
+    "endMs": 29512
+  },
+  {
+    "word": "a",
+    "startMs": 29525,
+    "endMs": 29600
+  },
+  {
+    "word": "long",
+    "startMs": 29612,
+    "endMs": 29887
+  },
+  {
+    "word": "PDF",
+    "startMs": 29900,
+    "endMs": 30600
+  },
+  {
+    "word": "None",
+    "startMs": 31462,
+    "endMs": 31737
+  },
+  {
+    "word": "of",
+    "startMs": 31750,
+    "endMs": 31850
+  },
+  {
+    "word": "this",
+    "startMs": 31862,
+    "endMs": 32100
+  },
+  {
+    "word": "replaces",
+    "startMs": 32112,
+    "endMs": 32662
+  },
+  {
+    "word": "your",
+    "startMs": 32675,
+    "endMs": 32787
+  },
+  {
+    "word": "judgment",
+    "startMs": 32800,
+    "endMs": 33462
+  },
+  {
+    "word": "It",
+    "startMs": 34325,
+    "endMs": 34512
+  },
+  {
+    "word": "just",
+    "startMs": 34525,
+    "endMs": 34812
+  },
+  {
+    "word": "clears",
+    "startMs": 34825,
+    "endMs": 35175
+  },
+  {
+    "word": "the",
+    "startMs": 35187,
+    "endMs": 35287
+  },
+  {
+    "word": "busywork",
+    "startMs": 35300,
+    "endMs": 35800
+  },
+  {
+    "word": "around",
+    "startMs": 35812,
+    "endMs": 36162
+  },
+  {
+    "word": "it",
+    "startMs": 36175,
+    "endMs": 36475
+  },
+  {
+    "word": "The",
+    "startMs": 37350,
+    "endMs": 37525
+  },
+  {
+    "word": "one",
+    "startMs": 37537,
+    "endMs": 37800
+  },
+  {
+    "word": "rule",
+    "startMs": 37812,
+    "endMs": 38037
+  },
+  {
+    "word": "that",
+    "startMs": 38050,
+    "endMs": 38175
+  },
+  {
+    "word": "makes",
+    "startMs": 38187,
+    "endMs": 38450
+  },
+  {
+    "word": "it",
+    "startMs": 38462,
+    "endMs": 38562
+  },
+  {
+    "word": "work",
+    "startMs": 38575,
+    "endMs": 39012
+  },
+  {
+    "word": "Always",
+    "startMs": 39875,
+    "endMs": 40287
+  },
+  {
+    "word": "keep",
+    "startMs": 40300,
+    "endMs": 40575
+  },
+  {
+    "word": "a",
+    "startMs": 40587,
+    "endMs": 40650
+  },
+  {
+    "word": "human",
+    "startMs": 40662,
+    "endMs": 41025
+  },
+  {
+    "word": "review",
+    "startMs": 41037,
+    "endMs": 41350
+  },
+  {
+    "word": "step",
+    "startMs": 41362,
+    "endMs": 41850
+  },
+  {
+    "word": "Verify",
+    "startMs": 42712,
+    "endMs": 43312
+  },
+  {
+    "word": "before",
+    "startMs": 43325,
+    "endMs": 43675
+  },
+  {
+    "word": "you",
+    "startMs": 43687,
+    "endMs": 43812
+  },
+  {
+    "word": "send",
+    "startMs": 43825,
+    "endMs": 44300
+  },
+  {
+    "word": "Try",
+    "startMs": 45162,
+    "endMs": 45437
+  },
+  {
+    "word": "one",
+    "startMs": 45450,
+    "endMs": 45625
+  },
+  {
+    "word": "of",
+    "startMs": 45637,
+    "endMs": 45712
+  },
+  {
+    "word": "these",
+    "startMs": 45725,
+    "endMs": 45925
+  },
+  {
+    "word": "this",
+    "startMs": 45937,
+    "endMs": 46112
+  },
+  {
+    "word": "week",
+    "startMs": 46125,
+    "endMs": 46425
+  },
+  {
+    "word": "and",
+    "startMs": 46637,
+    "endMs": 46750
+  },
+  {
+    "word": "follow",
+    "startMs": 46762,
+    "endMs": 47175
+  },
+  {
+    "word": "for",
+    "startMs": 47187,
+    "endMs": 47350
+  },
+  {
+    "word": "a",
+    "startMs": 47362,
+    "endMs": 47412
+  },
+  {
+    "word": "new",
+    "startMs": 47425,
+    "endMs": 47662
+  },
+  {
+    "word": "AI",
+    "startMs": 47675,
+    "endMs": 48100
+  },
+  {
+    "word": "workflow",
+    "startMs": 48112,
+    "endMs": 48650
+  },
+  {
+    "word": "every",
+    "startMs": 48662,
+    "endMs": 48975
+  },
+  {
+    "word": "day",
+    "startMs": 48987,
+    "endMs": 49412
+  }
+]
