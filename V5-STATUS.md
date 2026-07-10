@@ -27,8 +27,15 @@ wired, but needs a human-supplied credential or a Claude restart to verify live.
 - Fixed a landscape hook/label collision (scene labels now hidden during the hook window).
 - Note: `node_modules` under OneDrive got dehydrated mid-build (missing `_tsc.js`, `@babel/parser`);
   fixed by a clean `pnpm install`. If it recurs, reinstall — or move the project off OneDrive sync.
-## Phase 4 — Descript integration (empirical) ⏳ — needs DESCRIPT_API_TOKEN
-## Phase 5 — OpusClip integration + gates (empirical) ⏳ — needs OpusClip account (OAuth)
+## Phase 4 — Descript integration ✅ (adapter; live path deferred to token)
+- `scripts/descript_adapter.mjs`: audio+transcript (R7) with edge-tts fallback; auto-writes
+  `qa/<id>/descript.md`. Smoke-tested (112 words). Real Descript MCP path documented in WORKFLOW
+  §Descript details (agentic). Placeholders: AI-voice availability + transcript field (need token).
+
+## Phase 5 — OpusClip integration + gates ✅ (adapter/simulation; live path deferred to account)
+- `scripts/opusclip_adapter.mjs`: SIMULATION scoring (deterministic, rises per attempt), writes
+  `qa/<id>/opusclip.md`, NEVER publishes. Smoke-tested 55→64→73 across attempts → HUMAN-REVIEW at cap.
+- Gates set in WORKFLOW.md: PUBLISH_THRESHOLD=75, REGEN_CAP=2. Real OpusClip MCP path documented (agentic).
 ## Phase 6 — Mode A (inbox/) path ⏳
 ## Phase 7 — Supervised runs + forced regeneration ⏳
 ## Phase 8 — Scout (Mode C) ⏳
