@@ -25,6 +25,8 @@ export const brandSchema = z.object({
   fontFamily: z.string(),
 });
 
+export const formatKeySchema = z.enum(["landscape", "vertical", "square"]);
+
 export const videoSchema = z.object({
   hook: z.string(),
   scenes: z.array(sceneSchema),
@@ -32,7 +34,16 @@ export const videoSchema = z.object({
   captions: z.array(captionSchema),
   audioSrc: z.string().nullable(), // path under public/ (staticFile) or null (silent preview)
   brand: brandSchema,
+  format: formatKeySchema.default("vertical"),
 });
+
+// Canonical format dimensions (RULES.md Formats table). 30fps, h264, yuv420p for all.
+export type FormatKey = z.infer<typeof formatKeySchema>;
+export const FORMATS: Record<FormatKey, { width: number; height: number }> = {
+  landscape: { width: 1920, height: 1080 },
+  vertical: { width: 1080, height: 1920 },
+  square: { width: 1080, height: 1080 },
+};
 
 export type VideoProps = z.infer<typeof videoSchema>;
 export type Scene = z.infer<typeof sceneSchema>;

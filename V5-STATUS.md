@@ -12,8 +12,21 @@ wired, but needs a human-supplied credential or a Claude restart to verify live.
 - **Deferred (need restart + creds):** `/mcp` listing all three servers; Descript `check_status`;
   an OpusClip test call. OpusClip uses OAuth (browser sign-in on first call), not an API key.
 
-## Phase 2 — Governing docs → v5 ⏳
-## Phase 3 — Multi-format compositions + HyperFrames hybrid ⏳
+## Phase 2 — Governing docs → v5 ✅
+- CLAUDE.md (3 modes, caps 4/2, verify-APIs, audio-first, R15 gate, no self-edits to policy).
+- RULES.md (R1–R15, per-format table, R7=Descript transcript, R15 publish gate). Brand = placeholder.
+- WORKFLOW.md (18 steps + RETRO step 19, gates block, Descript/OpusClip placeholders for Phases 4–5).
+
+## Phase 3 — Multi-format compositions + HyperFrames hybrid ✅
+- `src/schema.ts`: `format` prop + `FORMATS` map. `VideoTemplate` now reads dims from
+  `useVideoConfig` and scales safe-areas/fonts per format (R8/R9 by construction).
+- 3 compositions registered: `Video-Landscape` (1920×1080), `Video-Vertical` (1080×1920),
+  `Video-Square` (1080×1080). 10s dummies render in all three ✅.
+- HyperFrames hybrid proven: `hyperframes/scene/` HTML → `public/broll/hf_scene.mp4`, embedded
+  as a scene via Remotion `<OffthreadVideo>`. Verified in-frame.
+- Fixed a landscape hook/label collision (scene labels now hidden during the hook window).
+- Note: `node_modules` under OneDrive got dehydrated mid-build (missing `_tsc.js`, `@babel/parser`);
+  fixed by a clean `pnpm install`. If it recurs, reinstall — or move the project off OneDrive sync.
 ## Phase 4 — Descript integration (empirical) ⏳ — needs DESCRIPT_API_TOKEN
 ## Phase 5 — OpusClip integration + gates (empirical) ⏳ — needs OpusClip account (OAuth)
 ## Phase 6 — Mode A (inbox/) path ⏳

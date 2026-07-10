@@ -3,6 +3,7 @@ import {
   AbsoluteFill,
   Audio,
   Img,
+  OffthreadVideo,
   Sequence,
   interpolate,
   spring,
@@ -12,19 +13,26 @@ import {
 } from "remotion";
 import type { Brand, Caption, Scene, VideoProps } from "./schema";
 
-// Canvas + safe-area constants (see RULES.md R8/R9).
-export const VIDEO_WIDTH = 1080;
-export const VIDEO_HEIGHT = 1920;
 export const VIDEO_FPS = 30;
 
-const EDGE_SAFE = 120;                       // R8: ≥120px from edges
-const BOTTOM_RESERVED = 300;                 // R8: nothing in bottom 300px
-const CAPTION_BASELINE = VIDEO_HEIGHT - BOTTOM_RESERVED - 60; // sits above reserved zone
+// Safe-area + sizing derived from the actual composition dimensions, so one component
+// serves all three formats (landscape/vertical/square) while satisfying R8/R9.
+const layout = (width: number, height: number) => {
+  const isVertical = height > width;
+  return {
+    edge: Math.round(width * 0.11), // ~120px @1080w (R8: >=120px from edges)
+    // Vertical platforms reserve the bottom ~300px for UI; landscape/square less.
+    bottomReserved: isVertical ? 300 : Math.round(height * 0.14),
+    hookSize: Math.max(72, Math.round(width * 0.082)),
+    sceneSize: Math.max(52, Math.round(width * 0.06)),
+    captionSize: Math.max(60, Math.round(width * 0.07)), // R9: >=60px @1080w
+    ctaSize: Math.max(56, Math.round(width * 0.066)),
+    hookTop: Math.round(height * 0.09),
+  };
+};
 
-// Total duration in frames from the scene storyboard (source of truth for length).
 export const totalDurationInFrames = (props: VideoProps): number => {
   const scenesSec = props.scenes.reduce((a, s) => a + s.durationSec, 0);
-  // Ensure captions/audio aren't cut off: extend to the last caption if longer.
   const lastCaptionSec =
     props.captions.length > 0
       ? Math.max(...props.captions.map((c) => c.endMs)) / 1000
@@ -33,33 +41,44 @@ export const totalDurationInFrames = (props: VideoProps): number => {
   return Math.max(1, Math.round(seconds * VIDEO_FPS));
 };
 
+const isVideoPath = (v: string) => /\.(mp4|mov|webm|m4v)$/i.test(v);
 const isImagePath = (v: string) =>
-  v.includes("/") || /\.(png|jpe?g|webp|gif|mp4|mov)$/i.test(v);
-
+  /\.(png|jpe?g|webp|gif)$/i.test(v) || (v.includes("/") && !isVideoPath(v));
 const isHexColor = (v: string) => /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v);
 
-// ---- Scene background (continuous motion → helps R5) ----
-const SceneLayer: React.FC<{ scene: Scene; brand: Brand }> = ({
-  scene,
-  brand,
-}) => {
+const SceneLayer: React.FC<{
+  scene: Scene;
+  brand: Brand;
+  globalFrom: number;
+  hideLabelBeforeFrame: number;
+}> = ({ scene, brand, globalFrom, hideLabelBeforeFrame }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, width, height } = useVideoConfig();
+  const L = layout(width, height);
+  // Hide this scene's label while the hook overlay owns the opening.
+  const showLabel = globalFrom + frame >= hideLabelBeforeFrame;
 
-  // Fade in/out at scene edges for a clear visual change between scenes.
   const fade = interpolate(
     frame,
     [0, 8, durationInFrames - 8, durationInFrames],
     [0, 1, 1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
-  // Slow ken-burns zoom so something moves every frame.
   const scale = interpolate(frame, [0, durationInFrames], [1.04, 1.12], {
     extrapolateRight: "clamp",
   });
 
   let background: React.ReactNode;
-  if (isImagePath(scene.visual)) {
+  if (isVideoPath(scene.visual)) {
+    // HyperFrames-generated scene (or any B-roll clip) embedded in the composition.
+    background = (
+      <OffthreadVideo
+        src={staticFile(scene.visual)}
+        muted
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    );
+  } else if (isImagePath(scene.visual)) {
     background = (
       <Img
         src={staticFile(scene.visual)}
@@ -86,22 +105,20 @@ const SceneLayer: React.FC<{ scene: Scene; brand: Brand }> = ({
   return (
     <AbsoluteFill style={{ opacity: fade, backgroundColor: brand.bg }}>
       {background}
-      {/* Scene label — kept inside the horizontal safe area, upper third. */}
-      {scene.text ? (
+      {scene.text && showLabel ? (
         <AbsoluteFill
           style={{
-            justifyContent: "flex-start",
+            justifyContent: "center",
             alignItems: "center",
-            paddingTop: 620,
-            paddingLeft: EDGE_SAFE,
-            paddingRight: EDGE_SAFE,
+            paddingLeft: L.edge,
+            paddingRight: L.edge,
           }}
         >
           <div
             style={{
               color: brand.text,
               fontFamily: brand.fontFamily,
-              fontSize: 64,
+              fontSize: L.sceneSize,
               fontWeight: 800,
               textAlign: "center",
               lineHeight: 1.1,
@@ -116,13 +133,13 @@ const SceneLayer: React.FC<{ scene: Scene; brand: Brand }> = ({
   );
 };
 
-// ---- Hook overlay (visible in the first ~2s → R4) ----
 const HookOverlay: React.FC<{ hook: string; brand: Brand }> = ({
   hook,
   brand,
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const L = layout(width, height);
   const enter = spring({ frame, fps, config: { damping: 200 } });
   const y = interpolate(enter, [0, 1], [-40, 0]);
   return (
@@ -130,9 +147,9 @@ const HookOverlay: React.FC<{ hook: string; brand: Brand }> = ({
       style={{
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingTop: 220,
-        paddingLeft: EDGE_SAFE,
-        paddingRight: EDGE_SAFE,
+        paddingTop: L.hookTop,
+        paddingLeft: L.edge,
+        paddingRight: L.edge,
       }}
     >
       <div
@@ -141,7 +158,7 @@ const HookOverlay: React.FC<{ hook: string; brand: Brand }> = ({
           opacity: enter,
           color: brand.accent1,
           fontFamily: brand.fontFamily,
-          fontSize: 88,
+          fontSize: L.hookSize,
           fontWeight: 900,
           textAlign: "center",
           lineHeight: 1.05,
@@ -154,21 +171,19 @@ const HookOverlay: React.FC<{ hook: string; brand: Brand }> = ({
   );
 };
 
-// ---- Word-timed caption band (R7/R8/R9) ----
 const Captions: React.FC<{ captions: Caption[]; brand: Brand }> = ({
   captions,
   brand,
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const L = layout(width, height);
   const tMs = (frame / fps) * 1000;
 
   if (captions.length === 0) return null;
 
-  // Active word = current time falls in [startMs, endMs).
   let active = captions.findIndex((c) => tMs >= c.startMs && tMs < c.endMs);
   if (active === -1) {
-    // between words: stick to the most recent word already started
     for (let i = captions.length - 1; i >= 0; i--) {
       if (tMs >= captions[i].startMs) {
         active = i;
@@ -178,7 +193,6 @@ const Captions: React.FC<{ captions: Caption[]; brand: Brand }> = ({
   }
   if (active === -1) active = 0;
 
-  // Sliding window of a few words around the active one so text never overflows.
   const start = Math.max(0, active - 2);
   const end = Math.min(captions.length, active + 4);
   const windowWords = captions.slice(start, end);
@@ -188,14 +202,14 @@ const Captions: React.FC<{ captions: Caption[]; brand: Brand }> = ({
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        paddingLeft: EDGE_SAFE,
-        paddingRight: EDGE_SAFE,
-        paddingBottom: VIDEO_HEIGHT - CAPTION_BASELINE,
+        paddingLeft: L.edge,
+        paddingRight: L.edge,
+        paddingBottom: L.bottomReserved + 40,
       }}
     >
       <div
         style={{
-          maxWidth: VIDEO_WIDTH - EDGE_SAFE * 2,
+          maxWidth: width - L.edge * 2,
           background: brand.captionBackdrop,
           borderRadius: 24,
           padding: "24px 36px",
@@ -213,7 +227,7 @@ const Captions: React.FC<{ captions: Caption[]; brand: Brand }> = ({
               style={{
                 color: isActive ? brand.accent1 : brand.text,
                 fontFamily: brand.fontFamily,
-                fontSize: 76, // R9: ≥60px
+                fontSize: L.captionSize,
                 fontWeight: isActive ? 900 : 700,
                 lineHeight: 1.15,
               }}
@@ -227,10 +241,10 @@ const Captions: React.FC<{ captions: Caption[]; brand: Brand }> = ({
   );
 };
 
-// ---- CTA end card (last ~2.5s → R6) ----
 const CtaCard: React.FC<{ cta: string; brand: Brand }> = ({ cta, brand }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const L = layout(width, height);
   const enter = spring({ frame, fps, config: { damping: 200 } });
   return (
     <AbsoluteFill
@@ -238,8 +252,8 @@ const CtaCard: React.FC<{ cta: string; brand: Brand }> = ({ cta, brand }) => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: `${brand.bg}E6`,
-        paddingLeft: EDGE_SAFE,
-        paddingRight: EDGE_SAFE,
+        paddingLeft: L.edge,
+        paddingRight: L.edge,
       }}
     >
       <div
@@ -249,7 +263,7 @@ const CtaCard: React.FC<{ cta: string; brand: Brand }> = ({ cta, brand }) => {
           color: brand.bg,
           background: brand.accent2,
           fontFamily: brand.fontFamily,
-          fontSize: 72,
+          fontSize: L.ctaSize,
           fontWeight: 900,
           textAlign: "center",
           lineHeight: 1.1,
@@ -274,11 +288,9 @@ export const VideoTemplate: React.FC<VideoProps> = ({
 }) => {
   const { durationInFrames } = useVideoConfig();
 
-  // CTA occupies the final ~2.5s; hook occupies the first ~2s.
   const ctaFrames = Math.min(Math.round(2.5 * VIDEO_FPS), durationInFrames);
   const hookFrames = Math.min(Math.round(2 * VIDEO_FPS), durationInFrames);
 
-  // Lay scenes back-to-back.
   let cursor = 0;
   const sceneSeqs = scenes.map((scene, i) => {
     const from = cursor;
@@ -286,7 +298,12 @@ export const VideoTemplate: React.FC<VideoProps> = ({
     cursor += len;
     return (
       <Sequence key={i} from={from} durationInFrames={len}>
-        <SceneLayer scene={scene} brand={brand} />
+        <SceneLayer
+          scene={scene}
+          brand={brand}
+          globalFrom={from}
+          hideLabelBeforeFrame={hookFrames}
+        />
       </Sequence>
     );
   });
@@ -294,21 +311,13 @@ export const VideoTemplate: React.FC<VideoProps> = ({
   return (
     <AbsoluteFill style={{ backgroundColor: brand.bg }}>
       {audioSrc ? <Audio src={staticFile(audioSrc)} /> : null}
-
-      {/* Scene backgrounds */}
       {sceneSeqs}
-
-      {/* Hook, only at the start */}
       <Sequence durationInFrames={hookFrames}>
         <HookOverlay hook={hook} brand={brand} />
       </Sequence>
-
-      {/* Captions run until the CTA takes over (so they don't bleed under it) */}
       <Sequence durationInFrames={durationInFrames - ctaFrames}>
         <Captions captions={captions} brand={brand} />
       </Sequence>
-
-      {/* CTA end card */}
       <Sequence from={durationInFrames - ctaFrames} durationInFrames={ctaFrames}>
         <CtaCard cta={cta} brand={brand} />
       </Sequence>

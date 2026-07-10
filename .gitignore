@@ -8,3 +8,6 @@ out
 
 # HyperFrames render outputs
 hyperframes/**/renders/
+
+# HyperFrames scene project deps (regenerated)
+hyperframes/*/node_modules/

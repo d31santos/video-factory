@@ -1,15 +1,16 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { VideoTemplate, VIDEO_FPS, VIDEO_WIDTH, VIDEO_HEIGHT, totalDurationInFrames } from "./VideoTemplate";
-import { videoSchema, defaultBrand, type VideoProps } from "./schema";
+import { VideoTemplate, VIDEO_FPS, totalDurationInFrames } from "./VideoTemplate";
+import { videoSchema, defaultBrand, FORMATS, type VideoProps, type FormatKey } from "./schema";
 
 // Self-contained demo props so `remotion render` works with zero setup.
-// Real runs overwrite these per topic (WORKFLOW.md steps 2–5).
-const demoProps: VideoProps = {
+// Real runs overwrite these per topic via --props (WORKFLOW steps 2–8).
+const demoProps: Omit<VideoProps, "format"> = {
   hook: "AI saves clinicians hours",
   scenes: [
     { text: "AI drafts your visit notes", visual: "#00E0B8", durationSec: 3 },
-    { text: "It triages routine messages", visual: "#FFD400", durationSec: 3 },
+    // Hybrid path: this scene's background is a HyperFrames-rendered HTML clip.
+    { text: "", visual: "broll/hf_scene.mp4", durationSec: 3 },
     { text: "Guidelines, right when you need them", visual: "#3A7BFF", durationSec: 3 },
     { text: "", visual: "#0B0B0F", durationSec: 3 },
   ],
@@ -36,22 +37,37 @@ const demoProps: VideoProps = {
   brand: defaultBrand,
 };
 
+// One composition per format, all sharing VideoTemplate + demo props.
+const formatKeys: FormatKey[] = ["landscape", "vertical", "square"];
+const compIdFor: Record<FormatKey, string> = {
+  landscape: "Video-Landscape",
+  vertical: "Video-Vertical",
+  square: "Video-Square",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="Video"
-        component={VideoTemplate}
-        schema={videoSchema}
-        fps={VIDEO_FPS}
-        width={VIDEO_WIDTH}
-        height={VIDEO_HEIGHT}
-        defaultProps={demoProps}
-        durationInFrames={totalDurationInFrames(demoProps)}
-        calculateMetadata={({ props }) => ({
-          durationInFrames: totalDurationInFrames(props),
-        })}
-      />
+      {formatKeys.map((key) => {
+        const { width, height } = FORMATS[key];
+        const props: VideoProps = { ...demoProps, format: key };
+        return (
+          <Composition
+            key={key}
+            id={compIdFor[key]}
+            component={VideoTemplate}
+            schema={videoSchema}
+            fps={VIDEO_FPS}
+            width={width}
+            height={height}
+            defaultProps={props}
+            durationInFrames={totalDurationInFrames(props)}
+            calculateMetadata={({ props }) => ({
+              durationInFrames: totalDurationInFrames(props),
+            })}
+          />
+        );
+      })}
     </>
   );
 };
