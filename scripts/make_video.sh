@@ -20,6 +20,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$SCRIPT_
 log() { echo "[make_video] $*"; }
 fail_log() { node scripts/record.mjs failure --id "${ID:-?}" --step "$1" --rule "$2" --symptom "$3" --fix "$4" --outcome "$5" >/dev/null 2>&1 || true; }
 
+# --- Dashboard heartbeat (logs/agents/<name>.json; cleared on exit) ---
+HB_AGENT="make_video-$$"
+hb() { node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section "$1" --step "${2:-}" \
+        --item "${ID:-}" --mode "${MODE:-}" --format "${FORMAT:-}" >/dev/null 2>&1 || true; }
+trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+
 # --- Args ---
 ID=""; FORMAT="vertical"
 while [ $# -gt 0 ]; do case "$1" in
@@ -35,6 +41,7 @@ render_min_start=$(date +%s)
 
 # --- Step 0: preflight (self-healing gate) ---
 log "preflight..."
+hb preflight "toolchain + service health"
 bash scripts/preflight.sh || { fail_log preflight hardreq "preflight hard fail" "install missing tools" "aborted"; exit 1; }
 
 # --- Step 1-3: Entry + mode detection ---
@@ -46,6 +53,7 @@ if [ ${#INBOX[@]} -gt 0 ]; then MODE="A"; SRC="${INBOX[0]}"; fi
 if [ "$MODE" = "A" ]; then
   [ -z "$ID" ] && ID="inbox-$(basename "${SRC%.*}")"
   log "MODE A — repurposing $SRC as $ID"
+  hb entry "mode A ingest: $SRC"
   mkdir -p "qa/${ID}"
   if ! node scripts/mode_a_ingest.mjs --video "$SRC" --id "$ID" --out "topics/active/${ID}.json" --format "$FORMAT"; then
     rc=$?
@@ -61,14 +69,17 @@ else
   [ -z "$ID" ] && ID="$(jq -r '.topics[] | select(.status=="pending") | .id' topics/queue.json | head -1)"
   [ -z "$ID" ] || [ "$ID" = "null" ] && { log "no pending topic"; exit 0; }
   log "MODE B — generating $ID"
+  hb entry "picked $ID from queue"
   SCRIPT_TXT="assets/audio/${ID}.txt"
   [ -f "$SCRIPT_TXT" ] || { log "ERROR: missing narration $SCRIPT_TXT"; fail_log script missing "no VO script" "write assets/audio/${ID}.txt" "aborted"; exit 1; }
   mkdir -p "qa/${ID}" public/audio
   # Steps 6-7: voice + transcript (Descript adapter → edge-tts fallback)
+  hb voice "TTS + word timings (edge-tts)"
   node scripts/descript_adapter.mjs --id "$ID" --script "$SCRIPT_TXT" \
     --out-audio "public/audio/${ID}.mp3" --out-captions "qa/${ID}-captions.json" \
     --descript-md "qa/${ID}/descript.md" || { fail_log voice tts "voice/transcript failed" "check edge-tts" "aborted"; exit 1; }
   # Step 8 (brief): build props
+  hb build "assembling brief props"
   node scripts/build_brief.mjs --id "$ID" --captions "qa/${ID}-captions.json" \
     --audio "audio/${ID}.mp3" --out "topics/active/${ID}.json" --format "$FORMAT" || exit 1
   # mark in_progress
@@ -80,8 +91,10 @@ COMP="$(comp_id "$FORMAT")"
 # --- render + validate + QA one cut; returns 0 if R1-R3 pass ---
 render_and_qa() {
   log "final render ($COMP)..."
+  hb render "remotion render $COMP"
   node_modules/.bin/remotion render "$COMP" "out/${ID}.mp4" --props="topics/active/${ID}.json" --crf=18 \
     || { fail_log render remotion "render failed" "see remotion output" "retry"; return 1; }
+  hb qa "validate R1-R3 + frames"
   bash scripts/validate_output.sh "out/${ID}.mp4" > "qa/${ID}/validate.json" || {
     cat "qa/${ID}/validate.json"; fail_log validate R1-R3 "ffprobe rules failed" "fix format/duration" "retry"; return 1; }
   cat "qa/${ID}/validate.json"
@@ -126,6 +139,7 @@ write_report
 # --- Steps 15-17: OpusClip evaluation + improve loop + publish gate ---
 attempt=0; first_score=""; best=0; published=false; decision=""
 while : ; do
+  hb score "OpusClip eval, attempt $attempt"
   out="$(node scripts/opusclip_adapter.mjs --id "$ID" --video "out/${ID}.mp4" \
         --threshold "$PUBLISH_THRESHOLD" --attempt "$attempt" --opusclip-md "qa/${ID}/opusclip.md")"
   echo "$out"
@@ -141,6 +155,7 @@ while : ; do
   # Improve loop: revise + regenerate (Mode B: new hook variant → rebuild → re-render).
   attempt=$((attempt+1))
   log "score $best < $PUBLISH_THRESHOLD → regeneration $attempt/$REGEN_CAP"
+  hb improve "regeneration $attempt/$REGEN_CAP (score $best)"
   if [ "$MODE" = "B" ]; then
     TITLE="$(jq -r --arg id "$ID" '.topics[]|select(.id==$id)|.title' topics/queue.json)"
     case "$attempt" in
@@ -155,6 +170,7 @@ while : ; do
 done
 
 # --- Step 18/19: metrics, retro, production.log, close ---
+hb close "metrics + retro + queue close"
 render_min=$(awk -v s="$render_min_start" -v e="$(date +%s)" 'BEGIN{printf "%.1f",(e-s)/60}')
 delta=$(( best - ${first_score:-0} ))
 node scripts/record.mjs metric --id "$ID" --enforce 1 --regens "$attempt" \

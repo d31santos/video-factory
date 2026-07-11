@@ -39,6 +39,19 @@
       ],
       "cta": "Follow for safe AI workflows",
       "tone": "energetic, direct, plain-spoken"
+    },
+    {
+      "id": "demo-004",
+      "status": "done",
+      "title": "The 4-week AI rollout playbook for clinics",
+      "angle": "Practical feedback-loop playbook, week by week.",
+      "keyPoints": [
+        "Week 1-2: pick one workflow, measure the baseline",
+        "Week 3: AI drafts with a human reviewer on every output",
+        "Week 4: compare numbers, feed corrections back"
+      ],
+      "cta": "Save this playbook",
+      "tone": "energetic, direct, plain-spoken"
     }
   ]
 }

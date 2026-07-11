@@ -3,3 +3,4 @@
 2026-07-10T22:36:18Z demo-003 mode=B fmt=vertical render=out/demo-003.mp4 dur=43.882667s qa=PASS score=75/75 regens=1 published=true
 2026-07-10T22:41:09Z inbox-talk mode=A fmt=vertical render=out/inbox-talk.mp4 dur=28.928000s qa=PASS score=84/999 regens=2 published=false
 2026-07-10T22:53:03Z demo-001 mode=B fmt=vertical render=out/demo-001.mp4 dur=50.048000s qa=PASS score=82/75 regens=2 published=true
+2026-07-11T15:24:06Z demo-004 mode=B fmt=vertical render=out/demo-004.mp4 dur=47.786667s qa=PASS score=78/75 regens=1 published=true

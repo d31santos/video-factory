@@ -21,13 +21,19 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; cd "$SCRIPT_DIR"
 N="${1:-1}"
 mkdir -p logs
 
+HB_AGENT="run_loop-$$"
+hb() { node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section "$1" --step "${2:-}" >/dev/null 2>&1 || true; }
+trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+
 # Self-healing gate: never start a run on a broken toolchain.
+hb preflight "toolchain check before loop"
 bash scripts/preflight.sh || { echo "run_loop: preflight hard-failed — aborting"; exit 1; }
 
 for i in $(seq 1 "$N"); do
   TS="$(date -u +%Y%m%dT%H%M%SZ)"
   LOG="logs/run_${TS}.log"
   echo "=== run $i/$N → $LOG ==="
+  hb agentic "claude -p run $i/$N (see nested make_video heartbeats for section)"
   claude -p "Execute WORKFLOW.md for the next pending item. Obey CLAUDE.md and RULES.md. One item, then stop." \
     --allowedTools "Bash,Read,Write,Edit,Glob,Grep,mcp__remotion,mcp__descript,mcp__opusclip" \
     --max-turns 150 2>&1 | tee "$LOG"

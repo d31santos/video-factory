@@ -1,0 +1,605 @@
+{
+  "mode": "B",
+  "hook": "Here's the 4-week AI rollout playbook for clinics",
+  "scenes": [
+    {
+      "text": "The 4-week AI rollout playbook for clinics",
+      "visual": "#00E0B8",
+      "durationSec": 11.93
+    },
+    {
+      "text": "Week 1-2: pick one workflow, measure the baseline",
+      "visual": "#FFD400",
+      "durationSec": 11.93
+    },
+    {
+      "text": "Week 3: AI drafts with a human reviewer on every output",
+      "visual": "#3A7BFF",
+      "durationSec": 11.93
+    },
+    {
+      "text": "Week 4: compare numbers, feed corrections back",
+      "visual": "#FF5C7A",
+      "durationSec": 11.93
+    }
+  ],
+  "cta": "Save this playbook",
+  "captions": [
+    {
+      "word": "Your",
+      "startMs": 100,
+      "endMs": 312
+    },
+    {
+      "word": "clinic's",
+      "startMs": 325,
+      "endMs": 750
+    },
+    {
+      "word": "AI",
+      "startMs": 762,
+      "endMs": 1075
+    },
+    {
+      "word": "rollout",
+      "startMs": 1087,
+      "endMs": 1550
+    },
+    {
+      "word": "will",
+      "startMs": 1562,
+      "endMs": 1725
+    },
+    {
+      "word": "live",
+      "startMs": 1737,
+      "endMs": 1987
+    },
+    {
+      "word": "or",
+      "startMs": 2000,
+      "endMs": 2100
+    },
+    {
+      "word": "die",
+      "startMs": 2112,
+      "endMs": 2412
+    },
+    {
+      "word": "on",
+      "startMs": 2425,
+      "endMs": 2550
+    },
+    {
+      "word": "one",
+      "startMs": 2562,
+      "endMs": 2787
+    },
+    {
+      "word": "thing",
+      "startMs": 2800,
+      "endMs": 3075
+    },
+    {
+      "word": "the",
+      "startMs": 3350,
+      "endMs": 3450
+    },
+    {
+      "word": "feedback",
+      "startMs": 3462,
+      "endMs": 3937
+    },
+    {
+      "word": "loop",
+      "startMs": 3950,
+      "endMs": 4387
+    },
+    {
+      "word": "Here's",
+      "startMs": 5250,
+      "endMs": 5550
+    },
+    {
+      "word": "the",
+      "startMs": 5562,
+      "endMs": 5662
+    },
+    {
+      "word": "playbook",
+      "startMs": 5675,
+      "endMs": 6325
+    },
+    {
+      "word": "Week",
+      "startMs": 7187,
+      "endMs": 7512
+    },
+    {
+      "word": "one",
+      "startMs": 7525,
+      "endMs": 7887
+    },
+    {
+      "word": "pick",
+      "startMs": 8087,
+      "endMs": 8287
+    },
+    {
+      "word": "a",
+      "startMs": 8300,
+      "endMs": 8375
+    },
+    {
+      "word": "single",
+      "startMs": 8387,
+      "endMs": 8775
+    },
+    {
+      "word": "workflow",
+      "startMs": 8787,
+      "endMs": 9237
+    },
+    {
+      "word": "visit",
+      "startMs": 9462,
+      "endMs": 9762
+    },
+    {
+      "word": "summaries",
+      "startMs": 9775,
+      "endMs": 10287
+    },
+    {
+      "word": "are",
+      "startMs": 10300,
+      "endMs": 10450
+    },
+    {
+      "word": "the",
+      "startMs": 10462,
+      "endMs": 10587
+    },
+    {
+      "word": "easiest",
+      "startMs": 10600,
+      "endMs": 11075
+    },
+    {
+      "word": "win",
+      "startMs": 11087,
+      "endMs": 11462
+    },
+    {
+      "word": "Week",
+      "startMs": 12325,
+      "endMs": 12662
+    },
+    {
+      "word": "two",
+      "startMs": 12675,
+      "endMs": 12987
+    },
+    {
+      "word": "measure",
+      "startMs": 13225,
+      "endMs": 13487
+    },
+    {
+      "word": "the",
+      "startMs": 13500,
+      "endMs": 13587
+    },
+    {
+      "word": "baseline",
+      "startMs": 13600,
+      "endMs": 14262
+    },
+    {
+      "word": "How",
+      "startMs": 15125,
+      "endMs": 15325
+    },
+    {
+      "word": "many",
+      "startMs": 15337,
+      "endMs": 15525
+    },
+    {
+      "word": "minutes",
+      "startMs": 15537,
+      "endMs": 15912
+    },
+    {
+      "word": "does",
+      "startMs": 15925,
+      "endMs": 16075
+    },
+    {
+      "word": "the",
+      "startMs": 16087,
+      "endMs": 16187
+    },
+    {
+      "word": "team",
+      "startMs": 16200,
+      "endMs": 16462
+    },
+    {
+      "word": "spend",
+      "startMs": 16475,
+      "endMs": 16787
+    },
+    {
+      "word": "today",
+      "startMs": 16800,
+      "endMs": 17237
+    },
+    {
+      "word": "Week",
+      "startMs": 18100,
+      "endMs": 18412
+    },
+    {
+      "word": "three",
+      "startMs": 18425,
+      "endMs": 18800
+    },
+    {
+      "word": "turn",
+      "startMs": 18975,
+      "endMs": 19237
+    },
+    {
+      "word": "on",
+      "startMs": 19250,
+      "endMs": 19362
+    },
+    {
+      "word": "the",
+      "startMs": 19375,
+      "endMs": 19450
+    },
+    {
+      "word": "AI",
+      "startMs": 19462,
+      "endMs": 19825
+    },
+    {
+      "word": "draft",
+      "startMs": 19837,
+      "endMs": 20387
+    },
+    {
+      "word": "but",
+      "startMs": 20575,
+      "endMs": 20725
+    },
+    {
+      "word": "keep",
+      "startMs": 20737,
+      "endMs": 20950
+    },
+    {
+      "word": "a",
+      "startMs": 20962,
+      "endMs": 21012
+    },
+    {
+      "word": "reviewer",
+      "startMs": 21025,
+      "endMs": 21562
+    },
+    {
+      "word": "on",
+      "startMs": 21575,
+      "endMs": 21750
+    },
+    {
+      "word": "every",
+      "startMs": 21762,
+      "endMs": 22050
+    },
+    {
+      "word": "output",
+      "startMs": 22062,
+      "endMs": 22675
+    },
+    {
+      "word": "Week",
+      "startMs": 23550,
+      "endMs": 23887
+    },
+    {
+      "word": "four",
+      "startMs": 23900,
+      "endMs": 24325
+    },
+    {
+      "word": "compare",
+      "startMs": 24550,
+      "endMs": 24937
+    },
+    {
+      "word": "the",
+      "startMs": 24950,
+      "endMs": 25037
+    },
+    {
+      "word": "numbers",
+      "startMs": 25050,
+      "endMs": 25487
+    },
+    {
+      "word": "and",
+      "startMs": 25500,
+      "endMs": 25675
+    },
+    {
+      "word": "collect",
+      "startMs": 25687,
+      "endMs": 26112
+    },
+    {
+      "word": "every",
+      "startMs": 26125,
+      "endMs": 26375
+    },
+    {
+      "word": "correction",
+      "startMs": 26387,
+      "endMs": 26900
+    },
+    {
+      "word": "the",
+      "startMs": 26912,
+      "endMs": 27012
+    },
+    {
+      "word": "reviewer",
+      "startMs": 27025,
+      "endMs": 27450
+    },
+    {
+      "word": "made",
+      "startMs": 27462,
+      "endMs": 27887
+    },
+    {
+      "word": "Those",
+      "startMs": 28750,
+      "endMs": 29075
+    },
+    {
+      "word": "corrections",
+      "startMs": 29087,
+      "endMs": 29675
+    },
+    {
+      "word": "are",
+      "startMs": 29687,
+      "endMs": 29787
+    },
+    {
+      "word": "gold",
+      "startMs": 29800,
+      "endMs": 30275
+    },
+    {
+      "word": "Feed",
+      "startMs": 31137,
+      "endMs": 31462
+    },
+    {
+      "word": "them",
+      "startMs": 31475,
+      "endMs": 31612
+    },
+    {
+      "word": "back",
+      "startMs": 31625,
+      "endMs": 31900
+    },
+    {
+      "word": "into",
+      "startMs": 31912,
+      "endMs": 32100
+    },
+    {
+      "word": "your",
+      "startMs": 32112,
+      "endMs": 32250
+    },
+    {
+      "word": "prompts",
+      "startMs": 32262,
+      "endMs": 32675
+    },
+    {
+      "word": "and",
+      "startMs": 32687,
+      "endMs": 32775
+    },
+    {
+      "word": "templates",
+      "startMs": 32787,
+      "endMs": 33337
+    },
+    {
+      "word": "and",
+      "startMs": 33575,
+      "endMs": 33700
+    },
+    {
+      "word": "the",
+      "startMs": 33712,
+      "endMs": 33812
+    },
+    {
+      "word": "drafts",
+      "startMs": 33825,
+      "endMs": 34237
+    },
+    {
+      "word": "get",
+      "startMs": 34250,
+      "endMs": 34437
+    },
+    {
+      "word": "sharper",
+      "startMs": 34450,
+      "endMs": 34950
+    },
+    {
+      "word": "every",
+      "startMs": 34962,
+      "endMs": 35212
+    },
+    {
+      "word": "single",
+      "startMs": 35225,
+      "endMs": 35562
+    },
+    {
+      "word": "week",
+      "startMs": 35575,
+      "endMs": 36012
+    },
+    {
+      "word": "Most",
+      "startMs": 36875,
+      "endMs": 37262
+    },
+    {
+      "word": "clinics",
+      "startMs": 37275,
+      "endMs": 37712
+    },
+    {
+      "word": "skip",
+      "startMs": 37725,
+      "endMs": 38012
+    },
+    {
+      "word": "the",
+      "startMs": 38025,
+      "endMs": 38112
+    },
+    {
+      "word": "measuring",
+      "startMs": 38125,
+      "endMs": 38600
+    },
+    {
+      "word": "and",
+      "startMs": 38612,
+      "endMs": 38725
+    },
+    {
+      "word": "stall",
+      "startMs": 38737,
+      "endMs": 39062
+    },
+    {
+      "word": "out",
+      "startMs": 39075,
+      "endMs": 39487
+    },
+    {
+      "word": "Don't",
+      "startMs": 40350,
+      "endMs": 40625
+    },
+    {
+      "word": "be",
+      "startMs": 40637,
+      "endMs": 40750
+    },
+    {
+      "word": "most",
+      "startMs": 40762,
+      "endMs": 41087
+    },
+    {
+      "word": "clinics",
+      "startMs": 41100,
+      "endMs": 41737
+    },
+    {
+      "word": "Save",
+      "startMs": 42600,
+      "endMs": 42962
+    },
+    {
+      "word": "this",
+      "startMs": 42975,
+      "endMs": 43162
+    },
+    {
+      "word": "playbook",
+      "startMs": 43175,
+      "endMs": 43675
+    },
+    {
+      "word": "and",
+      "startMs": 43937,
+      "endMs": 44050
+    },
+    {
+      "word": "follow",
+      "startMs": 44062,
+      "endMs": 44450
+    },
+    {
+      "word": "for",
+      "startMs": 44462,
+      "endMs": 44637
+    },
+    {
+      "word": "one",
+      "startMs": 44650,
+      "endMs": 44875
+    },
+    {
+      "word": "practical",
+      "startMs": 44887,
+      "endMs": 45437
+    },
+    {
+      "word": "AI",
+      "startMs": 45450,
+      "endMs": 45787
+    },
+    {
+      "word": "workflow",
+      "startMs": 45800,
+      "endMs": 46337
+    },
+    {
+      "word": "every",
+      "startMs": 46350,
+      "endMs": 46675
+    },
+    {
+      "word": "day",
+      "startMs": 46687,
+      "endMs": 47100
+    }
+  ],
+  "audioSrc": "audio/demo-004.mp3",
+  "brand": {
+    "bg": "#0B0B0F",
+    "text": "#FFFFFF",
+    "accent1": "#FFD400",
+    "accent2": "#00E0B8",
+    "captionBackdrop": "rgba(0,0,0,0.55)",
+    "fontFamily": "Inter, \"Segoe UI\", system-ui, -apple-system, \"Helvetica Neue\", Arial, sans-serif"
+  },
+  "format": "vertical",
+  "assetLog": [
+    {
+      "file": "audio/demo-004.mp3",
+      "provenance": "edge-tts (fallback voice+transcript)"
+    }
+  ]
+}
