@@ -68,9 +68,30 @@ Two execution paths share the caption contract (R7 = word timings from the trans
 shell, so it uses the documented FALLBACK: edge-tts voice + edge-tts `WordBoundary` as the
 transcript/timings; writes `qa/<id>/descript.md` (R13 satisfied via documented reason; R14 N/A).
 
-**PLACEHOLDERS still to confirm live in Phase 4 (need DESCRIPT_API_TOKEN):**
-- Whether AI voice is exposed on the plan's API. If not → fallback is recorded VO or caption-led.
-- Which `get_job` output field carries the word timings on this account (the real R7 source).
+**EMPIRICAL FINDINGS (2026-07-11, official Descript connector, live-tested):**
+- The live surface is the OFFICIAL Descript MCP connector (not the community
+  `@t-campbell18/descript-mcp`): `list_projects`, `get_project`, `import_media` (URL or
+  DIRECT FILE UPLOAD from disk via upload_urls), `prompt_project_agent` (NL edits),
+  `export_transcript` (txt/md/html/rtf/srt), `publish_project` (→ share_url + download_url),
+  `wait_for_job`, `list_jobs`, `cancel_job`.
+- **AI voice synthesis is NOT available headlessly.** The agent can queue script text as
+  `<scratch>` speech but cannot render audio: "Audio synthesis (text-to-speech, voice cloning,
+  dubbing, and audio regeneration) is not available in this API session." Rendering requires
+  opening the Descript app. → Mode B voice stays on the edge-tts fallback (or human VO).
+- **Transcript timings are phrase-level** (SRT segments), not word-level. R7 word timings
+  still come from edge-tts WordBoundary (Mode B) or a word-level sidecar/whisper (Mode A).
+  Descript SRT is usable as a cross-check and for Mode A keep/cut segmentation.
+- **Retrieval path (old 8.3/8.4 question) is SOLVED:** `publish_project` → `wait_for_job` →
+  result carries `share_url` + `download_url`. Download the polished cut → validate R14.
+- Agent jobs consume AI credits (1 credit per edit call observed); use model=claude-haiku-4.5
+  for cheap mechanical edits.
+- The connector is OAuth-bound to the interactive Claude session. The HEADLESS loop
+  (`run_loop.sh` → `claude -p`) does NOT inherit it — see §Headless Descript wiring below.
+
+**§Headless Descript wiring (the remaining gap):** either (a) add the hosted official
+Descript MCP to the CLI (`claude mcp add --transport http descript <hosted-mcp-url>` + OAuth
+once), or (b) export `DESCRIPT_API_TOKEN` for the community MCP in `.mcp.json`. Until one is
+done, headless runs use the documented edge-tts fallback (R13 reason) — they never block.
 
 ## §OpusClip details  <!-- Phase 5: adapter built; live MCP path is an integration checkpoint -->
 Two execution paths share the gate contract (R15).
