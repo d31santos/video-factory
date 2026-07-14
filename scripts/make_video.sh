@@ -22,9 +22,18 @@ fail_log() { node scripts/record.mjs failure --id "${ID:-?}" --step "$1" --rule 
 
 # --- Dashboard heartbeat (logs/agents/<name>.json; cleared on exit) ---
 HB_AGENT="make_video-$$"
+HB_INTERRUPTED=0
 hb() { node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section "$1" --step "${2:-}" \
         --item "${ID:-}" --mode "${MODE:-}" --format "${FORMAT:-}" >/dev/null 2>&1 || true; }
-trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+hb_exit() {
+  local rc=$?
+  local status=finished
+  [ "$HB_INTERRUPTED" = "1" ] && status=stopped
+  [ "$status" = "finished" ] && [ "$rc" -ne 0 ] && status=failed
+  node scripts/heartbeat.mjs clear --agent "$HB_AGENT" --status "$status" --note "exit $rc" >/dev/null 2>&1 || true
+}
+trap 'HB_INTERRUPTED=1; exit 130' INT TERM
+trap hb_exit EXIT
 
 # --- Args ---
 ID=""; FORMAT="vertical"

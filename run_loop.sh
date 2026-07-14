@@ -22,8 +22,17 @@ N="${1:-1}"
 mkdir -p logs
 
 HB_AGENT="run_loop-$$"
+HB_INTERRUPTED=0
 hb() { node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section "$1" --step "${2:-}" >/dev/null 2>&1 || true; }
-trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+hb_exit() {
+  local rc=$?
+  local status=finished
+  [ "$HB_INTERRUPTED" = "1" ] && status=stopped
+  [ "$status" = "finished" ] && [ "$rc" -ne 0 ] && status=failed
+  node scripts/heartbeat.mjs clear --agent "$HB_AGENT" --status "$status" --note "loop exit $rc" >/dev/null 2>&1 || true
+}
+trap 'HB_INTERRUPTED=1; exit 130' INT TERM
+trap hb_exit EXIT
 
 # Self-healing gate: never start a run on a broken toolchain.
 hb preflight "toolchain check before loop"
@@ -33,7 +42,7 @@ for i in $(seq 1 "$N"); do
   TS="$(date -u +%Y%m%dT%H%M%SZ)"
   LOG="logs/run_${TS}.log"
   echo "=== run $i/$N → $LOG ==="
-  hb agentic "claude -p run $i/$N (see nested make_video heartbeats for section)"
+  hb agentic "run $i/$N (see nested make_video heartbeats for section)"
   claude -p "Execute WORKFLOW.md for the next pending item. Obey CLAUDE.md and RULES.md. One item, then stop." \
     --allowedTools "Bash,Read,Write,Edit,Glob,Grep,mcp__remotion,mcp__descript,mcp__opusclip" \
     --max-turns 150 2>&1 | tee "$LOG"

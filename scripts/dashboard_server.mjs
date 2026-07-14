@@ -58,9 +58,14 @@ function status() {
     ? readdirSync(join(ROOT, "proposals")).filter((f) => f.endsWith(".md")).length
     : 0;
 
+  const events = readLines(join(ROOT, "logs", "agents", "events.jsonl"))
+    .map((l) => { try { return JSON.parse(l); } catch { return null; } })
+    .filter(Boolean).slice(-20).reverse();
+
   return {
     now: new Date().toISOString(),
     agents: agents(),
+    events,
     queue: {
       counts,
       items: queue.topics.map(({ id, status, title }) => ({ id, status, title })),

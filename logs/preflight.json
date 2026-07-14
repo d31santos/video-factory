@@ -1,9 +1,9 @@
 {
-  "ts": "2026-07-11T15:19:18Z",
+  "ts": "2026-07-14T13:21:05Z",
   "node": "v24.16.0",
   "python_ok": true,
   "descript": "fallback",
   "opusclip": "simulation",
-  "disk_gb": 480.5,
+  "disk_gb": 480.8,
   "hard_fail": false
 }

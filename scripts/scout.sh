@@ -11,7 +11,7 @@ mkdir -p logs
 
 HB_AGENT="scout-$$"
 node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section scout --step "web search → draft briefs (needs_approval)" >/dev/null 2>&1 || true
-trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+trap 'rc=$?; s=finished; [ $rc -ne 0 ] && s=failed; node scripts/heartbeat.mjs clear --agent "$HB_AGENT" --status "$s" --note "exit $rc" >/dev/null 2>&1 || true' EXIT
 
 # Configure the beats the scout covers (v5: AI/LLM, bioscience, IT + adjacent).
 SOURCES="AI/LLM research and vendor news; bioscience and clinical AI; IT and developer tooling"

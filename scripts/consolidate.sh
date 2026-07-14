@@ -14,7 +14,7 @@ mkdir -p proposals
 
 HB_AGENT="consolidate-$$"
 node scripts/heartbeat.mjs set --agent "$HB_AGENT" --pid "$$" --section consolidate --step "mining retros/metrics → proposal" >/dev/null 2>&1 || true
-trap 'node scripts/heartbeat.mjs clear --agent "$HB_AGENT" >/dev/null 2>&1 || true' EXIT
+trap 'rc=$?; s=finished; [ $rc -ne 0 ] && s=failed; node scripts/heartbeat.mjs clear --agent "$HB_AGENT" --status "$s" --note "exit $rc" >/dev/null 2>&1 || true' EXIT
 
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 OUT="proposals/consolidation_${STAMP}.md"

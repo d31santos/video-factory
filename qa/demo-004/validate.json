@@ -2,7 +2,7 @@
   "video": "out/demo-004.mp4",
   "probed": {
     "width": 1080,
-    "height": 1920,
+    "height": 1080,
     "vcodec": "h264",
     "pix_fmt": "yuv420p",
     "fps": 30.000,
@@ -11,7 +11,7 @@
     "acodec": "aac"
   },
   "rules": {
-    "R1": "PASS",
+    "R1": "FAIL",
     "R2": "PASS",
     "R3": "PASS"
   }

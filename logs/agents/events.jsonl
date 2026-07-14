@@ -1,0 +1,14 @@
+{"ts":"2026-07-14T13:19:55.629Z","agent":"make_video-553","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-14T13:19:55.630Z","agent":"make_video-553","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-14T13:19:57.010Z","agent":"make_video-553","type":"finished","item":"","section":"preflight","note":"exit 0"}
+{"ts":"2026-07-14T13:19:57.213Z","agent":"consolidate-611","type":"started","item":null,"section":"consolidate"}
+{"ts":"2026-07-14T13:19:57.213Z","agent":"consolidate-611","type":"section","section":"consolidate","step":"mining retros/metrics → proposal","item":null}
+{"ts":"2026-07-14T13:19:57.698Z","agent":"consolidate-611","type":"finished","item":null,"section":"consolidate","note":"exit 0"}
+{"ts":"2026-07-14T13:21:04.534Z","agent":"make_video-696","type":"started","item":"demo-004","section":"preflight"}
+{"ts":"2026-07-14T13:21:04.534Z","agent":"make_video-696","type":"section","section":"preflight","step":"toolchain + service health","item":"demo-004"}
+{"ts":"2026-07-14T13:21:05.150Z","agent":"make_video-696","type":"section","section":"entry","step":"picked demo-004 from queue","item":"demo-004"}
+{"ts":"2026-07-14T13:21:05.230Z","agent":"make_video-696","type":"section","section":"voice","step":"TTS + word timings (edge-tts)","item":"demo-004"}
+{"ts":"2026-07-14T13:21:08.169Z","agent":"make_video-696","type":"section","section":"build","step":"assembling brief props","item":"demo-004"}
+{"ts":"2026-07-14T13:21:08.456Z","agent":"make_video-696","type":"section","section":"render","step":"remotion render Video-Square","item":"demo-004"}
+{"ts":"2026-07-14T13:22:20.776Z","agent":"make_video-696","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"demo-004"}
+{"ts":"2026-07-14T13:22:23.174Z","agent":"make_video-696","type":"failed","item":"demo-004","section":"qa","note":"exit 1"}

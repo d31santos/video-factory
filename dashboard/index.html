@@ -99,6 +99,18 @@
   .runline { font-size: 12px; color: var(--ink-2); padding: 5px 0; border-bottom: 1px solid var(--grid);
              font-variant-numeric: tabular-nums; word-break: break-all; }
   .runline:last-child { border-bottom: 0; }
+
+  .ev { display: flex; align-items: baseline; gap: 8px; font-size: 12px; padding: 4px 0;
+        border-bottom: 1px solid var(--grid); }
+  .ev:last-child { border-bottom: 0; }
+  .ev .t { color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 60px; }
+  .ev .badge { flex: 0 0 76px; font-weight: 700; }
+  .ev .badge.started  { color: var(--series-1); }
+  .ev .badge.section  { color: var(--ink-2); font-weight: 600; }
+  .ev .badge.finished { color: var(--good-text); }
+  .ev .badge.stopped  { color: var(--ink-2); }
+  .ev .badge.failed   { color: var(--critical); }
+  .ev .d { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .qchip { display: inline-block; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--grid);
            font-size: 11px; color: var(--ink-2); margin: 2px 4px 2px 0; }
   .qchip b { color: var(--ink); }
@@ -121,6 +133,11 @@
 <div class="panel">
   <h2>Agents</h2>
   <div id="agents"></div>
+</div>
+
+<div class="panel">
+  <h2>Activity — starts, section moves, finishes, stops</h2>
+  <div id="events"></div>
 </div>
 
 <div class="cols">
@@ -220,6 +237,19 @@ function render(d) {
       <td>${esc(a.agent)}</td><td>${esc(a.item ?? "—")}</td>
       <td>${esc(a.mode ?? "—")}${a.format ? "/" + esc(a.format) : ""}</td>
       <td>${esc(a.section)}</td><td>${esc(a.step)}</td><td>${a.ageSec}s ago</td></tr>`).join("") + "</table>";
+
+  const ICONS = { started: "▶", section: "→", finished: "✓", stopped: "⏹", failed: "✕" };
+  document.getElementById("events").innerHTML = (d.events ?? []).length
+    ? d.events.map((e) => {
+        const t = new Date(e.ts).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+        const who = esc(e.agent.split("-")[0]) + (e.item ? " · " + esc(e.item) : "");
+        const what = e.type === "section" ? `${esc(e.section)}${e.step ? " — " + esc(e.step) : ""}`
+                   : e.note ? esc(e.note) : e.section ? "in " + esc(e.section) : "";
+        return `<div class="ev"><span class="t">${t}</span>` +
+               `<span class="badge ${esc(e.type)}">${ICONS[e.type] ?? "•"} ${esc(e.type)}</span>` +
+               `<span class="d"><b>${who}</b>&nbsp; ${what}</span></div>`;
+      }).join("")
+    : '<div class="empty">No activity yet — events appear when an agent starts.</div>';
 
   renderChart(d.metrics, d.gates.threshold);
 
