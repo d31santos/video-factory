@@ -1,6 +1,6 @@
 # Video Factory — autonomous short-video pipeline (Remotion + Descript + OpusClip)
 
-**Team members start here: [TEAM-GUIDE.md](TEAM-GUIDE.md)** — how it works, setup, and every run option. Operator quick-reference: [RUNBOOK.md](RUNBOOK.md). — how to produce videos, run the dashboard, and schedule unattended runs. Architecture and rules: [CLAUDE.md](CLAUDE.md), [WORKFLOW.md](WORKFLOW.md), [RULES.md](RULES.md). Build status: [V5-STATUS.md](V5-STATUS.md).
+**Team members start here: [TEAM-GUIDE.md](TEAM-GUIDE.md)** — how it works, setup, and every run option. Operator quick-reference: [RUNBOOK.md](RUNBOOK.md). Architecture and rules: [CLAUDE.md](CLAUDE.md), [WORKFLOW.md](WORKFLOW.md), [RULES.md](RULES.md). Build status: [V5-STATUS.md](V5-STATUS.md).
 
 ---
 
