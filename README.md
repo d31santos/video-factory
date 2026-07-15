@@ -1,4 +1,9 @@
-# Remotion video
+# Video Factory — autonomous short-video pipeline (Remotion + Descript + OpusClip)
+
+**Start here: [RUNBOOK.md](RUNBOOK.md)** — how to produce videos, run the dashboard, and schedule unattended runs. Architecture and rules: [CLAUDE.md](CLAUDE.md), [WORKFLOW.md](WORKFLOW.md), [RULES.md](RULES.md). Build status: [V5-STATUS.md](V5-STATUS.md).
+
+---
+
 
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">
