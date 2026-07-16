@@ -39,9 +39,11 @@ recent runs. Data comes from `logs/agents/` + `logs/` — refresh-free (polls ev
 **Control panel (top):** type a request and press *Run prompt (AI)* to have the loop
 produce a video from it (or research topics — drafts land as needs_approval); *Scout
 topics (AI)* and *Run next pending (no AI)* are one-click; every running job has a ⏹ Stop
-button that kills the process tree. API equivalents: `POST /api/start`
-`{type:"pending"|"prompt"|"scout", prompt?, id?, format?}` and `POST /api/stop {jobId}`.
-Job output: `logs/dash_<jobId>.log`.
+button that kills the process tree. **Attach a video** (🎞 + optional 📝 transcript .json)
+to make the run Mode A — it uploads into `inbox/` and your footage gets repurposed.
+API equivalents: `POST /api/start` `{type:"pending"|"prompt"|"scout", prompt?, id?, format?,
+video?}`, `POST /api/stop {jobId}`, and `POST /api/upload` (raw body + `x-filename` header,
+≤2 GB). Job output: `logs/dash_<jobId>.log`.
 
 ## The other levers
 | Task | Command |

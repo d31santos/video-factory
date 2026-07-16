@@ -137,6 +137,11 @@ across the architecture map in real time.
   "Go find fresh topics about Y") and the loop starts an AI run based on it: it writes the
   topic + narration itself, then produces the video end-to-end (or routes topic-research
   requests to scout behavior, drafts landing as `needs_approval`). Needs the `claude` CLI.
+- **Attach a video** (🎞, optional 📝 transcript sidecar) — uploads into `inbox/` and the run
+  becomes **Mode A**: your footage is repurposed instead of generating from scratch. Works
+  with both buttons: with *Run prompt (AI)* the AI is told to repurpose that exact file per
+  your instructions; with *Run next pending (no AI)* the deterministic pipeline picks it up
+  (it needs the transcript sidecar — without one the item is deferred, never crashed).
 - **"Scout topics (AI)"** — one-click topic discovery run.
 - **"Run next pending (no AI)"** — kick the deterministic pipeline; format selector applies.
 - **⏹ Stop** — every running job shows a row with a stop button; it kills the whole process

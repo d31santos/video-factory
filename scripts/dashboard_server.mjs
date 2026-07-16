@@ -78,7 +78,7 @@ const clearCard = (agent) => rmSync(join(AGENT_DIR, `${agent}.json`), { force: t
 const jobs = new Map(); // jobId → {jobId,type,pid,child,startedAt,detail,log,stopping}
 let jobSeq = 0;
 
-function launch(type, { prompt, id, format } = {}) {
+function launch(type, { prompt, id, format, video } = {}) {
   // One heavy job at a time per type keeps renders from trampling each other.
   for (const j of jobs.values())
     if (j.type === type) return { error: `a '${type}' job is already running (${j.jobId}) — stop it first` };
@@ -106,6 +106,12 @@ function launch(type, { prompt, id, format } = {}) {
       if (!prompt?.trim()) return { error: "prompt is empty" };
       // The user's text goes through a file, never through a shell command line.
       const promptFile = join(ROOT, "logs", `dash_${jobId}.prompt.txt`);
+      const videoNote = video
+        ? `\n\nA source video was uploaded with this request: ${video} — this is a MODE A run. ` +
+          `Repurpose THAT footage (WORKFLOW §Mode A) instead of generating from scratch: get its ` +
+          `transcript (Descript MCP, or the sidecar ${video.replace(/\.[^.]+$/, "")}.transcript.json ` +
+          `if present), mark keep/cut, recaption per RULES, and follow the request above for angle/format.`
+        : "";
       const instructions =
         `A human submitted this request from the factory dashboard:\n\n"${prompt.trim()}"\n\n` +
         `If it asks to produce a video: create a topic entry in topics/queue.json ` +
@@ -113,7 +119,7 @@ function launch(type, { prompt, id, format } = {}) {
         `assets/audio/dash-${ts}.txt, then execute WORKFLOW.md end-to-end for that item` +
         `${format ? ` with format ${format}` : ""}. If it asks to research/find topics, run the ` +
         `scout behavior instead: draft briefs into topics/queue.json as needs_approval, never pending. ` +
-        `Obey CLAUDE.md and RULES.md. One item, then stop.`;
+        `Obey CLAUDE.md and RULES.md. One item, then stop.` + videoNote;
       writeFileSync(promptFile, instructions);
       detail = `prompt: ${prompt.trim().slice(0, 80)}`;
       child = spawn(
@@ -249,9 +255,32 @@ const server = createServer(async (req, res) => {
   if (req.url === "/status.json") return json(res, 200, status());
 
   if (req.method === "POST" && req.url === "/api/start") {
-    const { type, prompt, id, format } = await body(req);
-    const r = launch(type, { prompt, id, format });
+    const { type, prompt, id, format, video } = await body(req);
+    const r = launch(type, { prompt, id, format, video });
     return json(res, r.error ? 409 : 200, r);
+  }
+
+  // Upload a source video (or its .transcript.json sidecar) into inbox/ for Mode A.
+  // Raw body; the filename travels in the x-filename header (URI-encoded).
+  if (req.method === "POST" && req.url === "/api/upload") {
+    const name = decodeURIComponent(req.headers["x-filename"] ?? "")
+      .replace(/[\\/]/g, "").replace(/[^\w. ()-]/g, "_").replace(/^\.+/, "");
+    if (!name || !/\.(mp4|mov|m4v|webm|json)$/i.test(name))
+      return json(res, 400, { error: "x-filename must end in .mp4/.mov/.m4v/.webm or .json" });
+    mkdirSync(join(ROOT, "inbox"), { recursive: true });
+    const dest = join(ROOT, "inbox", name);
+    const ws = createWriteStream(dest);
+    let size = 0;
+    const MAX = 2 * 1024 ** 3; // 2 GB cap
+    let aborted = false;
+    req.on("data", (c) => {
+      size += c.length;
+      if (size > MAX && !aborted) { aborted = true; ws.destroy(); rmSync(dest, { force: true }); req.destroy(); }
+    });
+    req.pipe(ws);
+    ws.on("finish", () => { if (!aborted) json(res, 200, { ok: true, path: `inbox/${name}`, bytes: size }); });
+    ws.on("error", () => { if (!aborted) json(res, 500, { error: "write failed" }); });
+    return;
   }
   if (req.method === "POST" && req.url === "/api/stop") {
     const { jobId } = await body(req);

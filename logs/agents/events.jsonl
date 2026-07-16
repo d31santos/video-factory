@@ -48,3 +48,15 @@
 {"ts":"2026-07-16T22:48:49.704Z","agent":"make_video-272","type":"section","section":"score","step":"OpusClip eval, attempt 1","item":"demo-004"}
 {"ts":"2026-07-16T22:48:49.965Z","agent":"make_video-272","type":"section","section":"close","step":"metrics + retro + queue close","item":"demo-004"}
 {"ts":"2026-07-16T22:48:50.313Z","agent":"make_video-272","type":"finished","item":"demo-004","section":"close","note":"exit 0"}
+{"ts":"2026-07-16T22:56:41.791Z","agent":"make_video-665","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:56:41.791Z","agent":"make_video-665","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:56:42.454Z","agent":"make_video-665","type":"section","section":"entry","step":"mode A ingest: inbox/talk.mp4","item":"inbox-talk"}
+{"ts":"2026-07-16T22:56:44.304Z","agent":"make_video-665","type":"section","section":"render","step":"remotion render Video-Vertical","item":"inbox-talk"}
+{"ts":"2026-07-16T22:57:39.595Z","agent":"make_video-665","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"inbox-talk"}
+{"ts":"2026-07-16T22:57:45.394Z","agent":"make_video-665","type":"section","section":"score","step":"OpusClip eval, attempt 0","item":"inbox-talk"}
+{"ts":"2026-07-16T22:57:45.628Z","agent":"make_video-665","type":"section","section":"improve","step":"regeneration 1/2 (score 66)","item":"inbox-talk"}
+{"ts":"2026-07-16T22:57:45.683Z","agent":"make_video-665","type":"section","section":"render","step":"remotion render Video-Vertical","item":"inbox-talk"}
+{"ts":"2026-07-16T22:58:47.076Z","agent":"make_video-665","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"inbox-talk"}
+{"ts":"2026-07-16T22:58:52.698Z","agent":"make_video-665","type":"section","section":"score","step":"OpusClip eval, attempt 1","item":"inbox-talk"}
+{"ts":"2026-07-16T22:58:52.931Z","agent":"make_video-665","type":"section","section":"close","step":"metrics + retro + queue close","item":"inbox-talk"}
+{"ts":"2026-07-16T22:58:53.262Z","agent":"make_video-665","type":"finished","item":"inbox-talk","section":"close","note":"exit 0"}

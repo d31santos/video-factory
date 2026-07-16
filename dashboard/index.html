@@ -134,6 +134,11 @@
   }
   #ctl-msg { font-size: 12px; color: var(--ink-2); }
   #ctl-msg.err { color: var(--critical); }
+  .filelab { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2);
+             border: 1px dashed var(--grid); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+  .filelab:hover { border-color: var(--series-1); }
+  .filelab input[type="file"] { display: none; }
+  .filelab.has { border-style: solid; border-color: var(--series-1); color: var(--ink); }
   .job { display: flex; align-items: center; gap: 10px; margin-top: 8px; padding: 8px 10px;
          border: 1px solid var(--grid); border-radius: 8px; font-size: 12px; }
   .job .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good);
@@ -157,6 +162,12 @@
   <div class="ctl">
     <textarea id="ctl-prompt" rows="2"
       placeholder="Tell the loop what to do… e.g. “Make a vertical video about why clinics should measure AI time savings” or “Go find fresh topics about clinical AI”."></textarea>
+    <div class="ctl-row">
+      <label class="filelab">🎞 <input type="file" id="ctl-video" accept=".mp4,.mov,.m4v,.webm" />
+        <span id="ctl-video-name">attach video (optional — Mode A)</span></label>
+      <label class="filelab">📝 <input type="file" id="ctl-sidecar" accept=".json" />
+        <span id="ctl-sidecar-name">transcript .json (optional)</span></label>
+    </div>
     <div class="ctl-row">
       <select id="ctl-format">
         <option value="">format: auto</option>
@@ -277,11 +288,46 @@ async function api(path, payload) {
     return j;
   } catch { msg("server unreachable", true); return null; }
 }
+// File pickers: show the chosen name on the chip.
+for (const kind of ["video", "sidecar"]) {
+  const input = document.getElementById(`ctl-${kind}`);
+  input.addEventListener("change", () => {
+    const label = input.closest(".filelab");
+    const nameEl = document.getElementById(`ctl-${kind}-name`);
+    if (input.files[0]) { nameEl.textContent = input.files[0].name; label.classList.add("has"); }
+    else { nameEl.textContent = kind === "video" ? "attach video (optional — Mode A)" : "transcript .json (optional)"; label.classList.remove("has"); }
+  });
+}
+async function uploadFile(file) {
+  msg(`uploading ${file.name} (${Math.round(file.size / 1048576)} MB)…`);
+  try {
+    const r = await fetch("/api/upload", { method: "POST", headers: { "x-filename": encodeURIComponent(file.name) }, body: file });
+    const j = await r.json();
+    if (!r.ok) { msg(j.error ?? "upload failed", true); return null; }
+    return j.path;
+  } catch { msg("upload failed — server unreachable", true); return null; }
+}
 async function startJob(type) {
   const prompt = document.getElementById("ctl-prompt").value;
   const format = document.getElementById("ctl-format").value || undefined;
-  const r = await api("/api/start", { type, prompt, format });
-  if (r) { msg(`started ${r.jobId} — ${r.detail}`); if (type === "prompt") document.getElementById("ctl-prompt").value = ""; tick(); }
+  const videoInput = document.getElementById("ctl-video");
+  const sidecarInput = document.getElementById("ctl-sidecar");
+
+  // Attached video → upload into inbox/ first (plus optional transcript sidecar).
+  let video;
+  if (videoInput.files[0]) {
+    video = await uploadFile(videoInput.files[0]);
+    if (!video) return;
+    if (sidecarInput.files[0] && !(await uploadFile(sidecarInput.files[0]))) return;
+  }
+
+  const r = await api("/api/start", { type, prompt, format, video });
+  if (r) {
+    msg(`started ${r.jobId} — ${r.detail}`);
+    if (type === "prompt") document.getElementById("ctl-prompt").value = "";
+    for (const inp of [videoInput, sidecarInput]) { inp.value = ""; inp.dispatchEvent(new Event("change")); }
+    tick();
+  }
 }
 document.getElementById("btn-prompt").addEventListener("click", () => {
   if (!document.getElementById("ctl-prompt").value.trim()) return msg("type a request first", true);
