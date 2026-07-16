@@ -11,3 +11,9 @@ hyperframes/**/renders/
 
 # HyperFrames scene project deps (regenerated)
 hyperframes/*/node_modules/
+
+# Build plans stay local (removed from the repo on request)
+V5-STATUS.md
+PLAN.md
+HANDOFF.md
+*.pdf

@@ -208,7 +208,7 @@ bash scripts/extract_frames.sh out/x.mp4 x      # QA frames → qa/x/
 
 | Integration | Status | Meaning |
 |---|---|---|
-| **OpusClip (scores/publish)** | **Simulation** | Scores are synthetic; "would auto-publish" is advisory. Real path needs an OpusClip account + MCP (OAuth); platforms connect inside OpusClip. |
+| **OpusClip (scores/publish)** | **Simulation** | Scores are synthetic; "would auto-publish" is advisory — nothing is ever posted. The real path is OpusClip's hosted MCP (beta): `claude mcp add --transport http opusclip https://mcp.opus.pro`, sign in with OAuth. Calling its tools requires the **OpusClip Pro plan** (or their free trial to test); connect your social accounts inside OpusClip itself. |
 | **Descript (voice/polish)** | **Fallback** | edge-tts does voice + word captions (works well for TTS content). Live Descript needs a token; note its API cannot render AI voices headlessly (tested), so edge-tts remains the TTS either way. |
 | **Brand** | **Placeholder** | `RULES.md ## Brand` has a neutral palette — replace with the real brand before production. |
 
@@ -224,5 +224,5 @@ fully live.
    on the dashboard, and `logs/failures.jsonl`.
 
 *Deeper reading: [CLAUDE.md](CLAUDE.md) (agent contract) · [WORKFLOW.md](WORKFLOW.md) (the 18
-steps + gates) · [RULES.md](RULES.md) (quality contract) · [V5-STATUS.md](V5-STATUS.md) (build
-history) · [RUNBOOK.md](RUNBOOK.md) (operator quick reference for the original machine).*
+steps + gates) · [RULES.md](RULES.md) (quality contract) · [RUNBOOK.md](RUNBOOK.md) (operator
+quick reference for the original machine).*
