@@ -36,7 +36,7 @@ trap hb_exit EXIT
 
 # Self-healing gate: never start a run on a broken toolchain.
 hb preflight "toolchain check before loop"
-bash scripts/preflight.sh || { echo "run_loop: preflight hard-failed — aborting"; exit 1; }
+"$BASH" scripts/preflight.sh || { echo "run_loop: preflight hard-failed — aborting"; exit 1; }
 
 for i in $(seq 1 "$N"); do
   TS="$(date -u +%Y%m%dT%H%M%SZ)"

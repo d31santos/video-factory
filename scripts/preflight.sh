@@ -5,7 +5,7 @@
 # Exit non-zero ONLY when a hard requirement (node/ffmpeg/ffprobe/jq) is missing.
 set -uo pipefail
 
-export PATH="/c/Users/david/AppData/Local/pnpm:$PATH"
+export PATH="/c/Users/david/AppData/Local/pnpm/bin:/c/Users/david/AppData/Local/pnpm:$PATH"
 FFDIR="$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg*/bin 2>/dev/null | head -1 || true)"
 JQDIR="$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq*/ 2>/dev/null | head -1 || true)"
 [ -n "$FFDIR" ] && export PATH="$FFDIR:$PATH"
@@ -59,4 +59,7 @@ if [ "$hard_fail" -ne 0 ]; then
   echo "preflight: HARD FAIL — fix the MISSING items above before running." >&2
   exit 1
 fi
-echo "preflight: OK (degraded services use documented fallbacks)"
+# Explicit success: never let a failed echo (e.g. broken stdout under a
+# detached/service parent) become this script's exit status.
+echo "preflight: OK (degraded services use documented fallbacks)" || true
+exit 0

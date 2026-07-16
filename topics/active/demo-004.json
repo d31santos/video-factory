@@ -1,6 +1,6 @@
 {
   "mode": "B",
-  "hook": "The 4-week AI rollout playbook for clinics",
+  "hook": "Here's the 4-week AI rollout playbook for clinics",
   "scenes": [
     {
       "text": "The 4-week AI rollout playbook for clinics",
@@ -595,7 +595,7 @@
     "captionBackdrop": "rgba(0,0,0,0.55)",
     "fontFamily": "Inter, \"Segoe UI\", system-ui, -apple-system, \"Helvetica Neue\", Arial, sans-serif"
   },
-  "format": "square",
+  "format": "vertical",
   "assetLog": [
     {
       "file": "audio/demo-004.mp3",

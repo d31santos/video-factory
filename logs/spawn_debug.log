@@ -1,0 +1,10 @@
+preflight:
+  node             OK  v24.16.0
+  ffmpeg           OK  
+  ffprobe          OK  
+  jq               OK  
+  python           OK  edge-tts fallback available
+  descript         FALLBACK  edge-tts if no token; MCP verified at agent runtime
+  opusclip         SIMULATION  OAuth MCP (agentic only); deterministic path simulates + never publishes
+  disk             OK  470.2GB free
+preflight: OK (degraded services use documented fallbacks)

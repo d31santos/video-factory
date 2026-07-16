@@ -9,8 +9,9 @@
 # Env overrides: PUBLISH_THRESHOLD, REGEN_CAP (else read from WORKFLOW.md).
 set -uo pipefail
 
+
 # --- Toolchain ---
-export PATH="/c/Users/david/AppData/Local/pnpm:/c/Users/david/AppData/Local/Programs/Python/Python313:$PATH"
+export PATH="/c/Users/david/AppData/Local/pnpm/bin:/c/Users/david/AppData/Local/pnpm:/c/Users/david/AppData/Local/Programs/Python/Python313:$PATH"
 FFDIR="$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg*/bin 2>/dev/null | head -1 || true)"
 JQDIR="$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq*/ 2>/dev/null | head -1 || true)"
 [ -n "$FFDIR" ] && export PATH="$FFDIR:$PATH"
@@ -51,7 +52,7 @@ render_min_start=$(date +%s)
 # --- Step 0: preflight (self-healing gate) ---
 log "preflight..."
 hb preflight "toolchain + service health"
-bash scripts/preflight.sh || { fail_log preflight hardreq "preflight hard fail" "install missing tools" "aborted"; exit 1; }
+"$BASH" scripts/preflight.sh || { fail_log preflight hardreq "preflight hard fail" "install missing tools" "aborted"; exit 1; }
 
 # --- Step 1-3: Entry + mode detection ---
 shopt -s nullglob
@@ -104,13 +105,13 @@ render_and_qa() {
   node_modules/.bin/remotion render "$COMP" "out/${ID}.mp4" --props="topics/active/${ID}.json" --crf=18 \
     || { fail_log render remotion "render failed" "see remotion output" "retry"; return 1; }
   hb qa "validate R1-R3 + frames"
-  bash scripts/validate_output.sh "out/${ID}.mp4" > "qa/${ID}/validate.json" || {
+  "$BASH" scripts/validate_output.sh "out/${ID}.mp4" > "qa/${ID}/validate.json" || {
     cat "qa/${ID}/validate.json"; fail_log validate R1-R3 "ffprobe rules failed" "fix format/duration" "retry"; return 1; }
   cat "qa/${ID}/validate.json"
   # R3 silence gap
   if [ "$(ffmpeg -hide_banner -i "out/${ID}.mp4" -af silencedetect=noise=-40dB:d=1.5 -f null - 2>&1 | grep -c silence_duration)" -ne 0 ]; then
     fail_log validate R3 "silence >1.5s" "trim tail in build_brief" "retry"; return 1; fi
-  bash scripts/extract_frames.sh "out/${ID}.mp4" "$ID" >/dev/null
+  "$BASH" scripts/extract_frames.sh "out/${ID}.mp4" "$ID" >/dev/null
   return 0
 }
 

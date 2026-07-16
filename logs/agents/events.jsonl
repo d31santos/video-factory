@@ -12,3 +12,39 @@
 {"ts":"2026-07-14T13:21:08.456Z","agent":"make_video-696","type":"section","section":"render","step":"remotion render Video-Square","item":"demo-004"}
 {"ts":"2026-07-14T13:22:20.776Z","agent":"make_video-696","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"demo-004"}
 {"ts":"2026-07-14T13:22:23.174Z","agent":"make_video-696","type":"failed","item":"demo-004","section":"qa","note":"exit 1"}
+{"ts":"2026-07-16T22:19:12.990Z","agent":"make_video-1672","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:19:12.990Z","agent":"make_video-1672","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:19:14.421Z","agent":"make_video-1672","type":"failed","item":"","section":"preflight","note":"exit 1"}
+{"ts":"2026-07-16T22:23:05.897Z","agent":"make_video-1323","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:23:05.897Z","agent":"make_video-1323","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:23:06.590Z","agent":"make_video-1323","type":"failed","item":"","section":"preflight","note":"exit 1"}
+{"ts":"2026-07-16T22:27:11.472Z","agent":"make_video-208","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:27:11.472Z","agent":"make_video-208","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:27:12.184Z","agent":"make_video-208","type":"failed","item":"","section":"preflight","note":"exit 1"}
+{"ts":"2026-07-16T22:32:24.851Z","agent":"make_video-1249","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:32:24.851Z","agent":"make_video-1249","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:32:25.519Z","agent":"make_video-1249","type":"failed","item":"","section":"preflight","note":"exit 1"}
+{"ts":"2026-07-16T22:34:46.091Z","agent":"make_video-1920","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-16T22:34:46.091Z","agent":"make_video-1920","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-16T22:34:46.830Z","agent":"make_video-1920","type":"finished","item":"","section":"preflight","note":"exit 0"}
+{"ts":"2026-07-16T22:38:54.252Z","agent":"make_video-545","type":"started","item":"demo-004","section":"preflight"}
+{"ts":"2026-07-16T22:38:54.253Z","agent":"make_video-545","type":"section","section":"preflight","step":"toolchain + service health","item":"demo-004"}
+{"ts":"2026-07-16T22:38:54.889Z","agent":"make_video-545","type":"section","section":"entry","step":"picked demo-004 from queue","item":"demo-004"}
+{"ts":"2026-07-16T22:38:54.976Z","agent":"make_video-545","type":"section","section":"voice","step":"TTS + word timings (edge-tts)","item":"demo-004"}
+{"ts":"2026-07-16T22:38:57.037Z","agent":"make_video-545","type":"section","section":"build","step":"assembling brief props","item":"demo-004"}
+{"ts":"2026-07-16T22:38:57.358Z","agent":"make_video-545","type":"section","section":"render","step":"remotion render Video-Square","item":"demo-004"}
+{"ts":"2026-07-16T22:40:34.727Z","agent":"dash_pending-2-20260716T223853","type":"stopped","note":"stop requested from dashboard"}
+{"ts":"2026-07-16T22:44:42.555Z","agent":"make_video-272","type":"started","item":"demo-004","section":"preflight"}
+{"ts":"2026-07-16T22:44:42.555Z","agent":"make_video-272","type":"section","section":"preflight","step":"toolchain + service health","item":"demo-004"}
+{"ts":"2026-07-16T22:44:43.231Z","agent":"make_video-272","type":"section","section":"entry","step":"picked demo-004 from queue","item":"demo-004"}
+{"ts":"2026-07-16T22:44:43.309Z","agent":"make_video-272","type":"section","section":"voice","step":"TTS + word timings (edge-tts)","item":"demo-004"}
+{"ts":"2026-07-16T22:44:44.862Z","agent":"make_video-272","type":"section","section":"build","step":"assembling brief props","item":"demo-004"}
+{"ts":"2026-07-16T22:44:45.080Z","agent":"make_video-272","type":"section","section":"render","step":"remotion render Video-Vertical","item":"demo-004"}
+{"ts":"2026-07-16T22:46:37.253Z","agent":"make_video-272","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"demo-004"}
+{"ts":"2026-07-16T22:46:44.164Z","agent":"make_video-272","type":"section","section":"score","step":"OpusClip eval, attempt 0","item":"demo-004"}
+{"ts":"2026-07-16T22:46:44.394Z","agent":"make_video-272","type":"section","section":"improve","step":"regeneration 1/2 (score 69)","item":"demo-004"}
+{"ts":"2026-07-16T22:46:44.591Z","agent":"make_video-272","type":"section","section":"render","step":"remotion render Video-Vertical","item":"demo-004"}
+{"ts":"2026-07-16T22:48:43.869Z","agent":"make_video-272","type":"section","section":"qa","step":"validate R1-R3 + frames","item":"demo-004"}
+{"ts":"2026-07-16T22:48:49.704Z","agent":"make_video-272","type":"section","section":"score","step":"OpusClip eval, attempt 1","item":"demo-004"}
+{"ts":"2026-07-16T22:48:49.965Z","agent":"make_video-272","type":"section","section":"close","step":"metrics + retro + queue close","item":"demo-004"}
+{"ts":"2026-07-16T22:48:50.313Z","agent":"make_video-272","type":"finished","item":"demo-004","section":"close","note":"exit 0"}

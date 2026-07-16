@@ -111,6 +111,36 @@
   .ev .badge.stopped  { color: var(--ink-2); }
   .ev .badge.failed   { color: var(--critical); }
   .ev .d { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Control panel */
+  .ctl textarea {
+    width: 100%; resize: vertical; background: var(--page); color: var(--ink);
+    border: 1px solid var(--grid); border-radius: 8px; padding: 10px 12px;
+    font: 13px/1.4 system-ui, sans-serif;
+  }
+  .ctl textarea:focus { outline: none; border-color: var(--series-1); }
+  .ctl-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .btn {
+    border: 1px solid var(--grid); background: var(--page); color: var(--ink);
+    border-radius: 8px; padding: 7px 14px; font: 600 13px system-ui, sans-serif; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--series-1); }
+  .btn.primary { background: var(--series-1); border-color: var(--series-1); color: #fff; }
+  .btn.stop { color: var(--critical); }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+  select {
+    border: 1px solid var(--grid); background: var(--page); color: var(--ink);
+    border-radius: 8px; padding: 7px 10px; font: 13px system-ui, sans-serif;
+  }
+  #ctl-msg { font-size: 12px; color: var(--ink-2); }
+  #ctl-msg.err { color: var(--critical); }
+  .job { display: flex; align-items: center; gap: 10px; margin-top: 8px; padding: 8px 10px;
+         border: 1px solid var(--grid); border-radius: 8px; font-size: 12px; }
+  .job .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good);
+                animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .job .jd { flex: 1; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .job .jd b { color: var(--ink); }
   .qchip { display: inline-block; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--grid);
            font-size: 11px; color: var(--ink-2); margin: 2px 4px 2px 0; }
   .qchip b { color: var(--ink); }
@@ -121,6 +151,27 @@
   <h1>🎬 Video Factory</h1>
   <div id="conn"><span class="dot"></span><span id="conn-t">connecting…</span></div>
 </header>
+
+<div class="panel">
+  <h2>Control — start, stop, and prompt the loop</h2>
+  <div class="ctl">
+    <textarea id="ctl-prompt" rows="2"
+      placeholder="Tell the loop what to do… e.g. “Make a vertical video about why clinics should measure AI time savings” or “Go find fresh topics about clinical AI”."></textarea>
+    <div class="ctl-row">
+      <select id="ctl-format">
+        <option value="">format: auto</option>
+        <option value="vertical">vertical</option>
+        <option value="landscape">landscape</option>
+        <option value="square">square</option>
+      </select>
+      <button class="btn primary" id="btn-prompt">▶ Run prompt (AI)</button>
+      <button class="btn" id="btn-scout">🔍 Scout topics (AI)</button>
+      <button class="btn" id="btn-pending">▶ Run next pending (no AI)</button>
+      <span id="ctl-msg"></span>
+    </div>
+    <div id="jobs"></div>
+  </div>
+</div>
 
 <div class="tiles" id="tiles"></div>
 
@@ -212,7 +263,49 @@ function renderChart(metrics, threshold) {
   });
 }
 
+// ---- Control panel ----
+const msg = (t, err) => {
+  const el = document.getElementById("ctl-msg");
+  el.textContent = t; el.className = err ? "err" : "";
+  if (t) setTimeout(() => { if (el.textContent === t) el.textContent = ""; }, 8000);
+};
+async function api(path, payload) {
+  try {
+    const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    const j = await r.json();
+    if (!r.ok) { msg(j.error ?? "request failed", true); return null; }
+    return j;
+  } catch { msg("server unreachable", true); return null; }
+}
+async function startJob(type) {
+  const prompt = document.getElementById("ctl-prompt").value;
+  const format = document.getElementById("ctl-format").value || undefined;
+  const r = await api("/api/start", { type, prompt, format });
+  if (r) { msg(`started ${r.jobId} — ${r.detail}`); if (type === "prompt") document.getElementById("ctl-prompt").value = ""; tick(); }
+}
+document.getElementById("btn-prompt").addEventListener("click", () => {
+  if (!document.getElementById("ctl-prompt").value.trim()) return msg("type a request first", true);
+  startJob("prompt");
+});
+document.getElementById("btn-scout").addEventListener("click", () => startJob("scout"));
+document.getElementById("btn-pending").addEventListener("click", () => startJob("pending"));
+async function stopJob(jobId) {
+  const r = await api("/api/stop", { jobId });
+  if (r) { msg(`stop signal sent to ${jobId}`); tick(); }
+}
+
+function renderJobs(jobsList) {
+  const el = document.getElementById("jobs");
+  el.innerHTML = (jobsList ?? []).map((j) => {
+    const mins = Math.round((Date.now() - Date.parse(j.startedAt)) / 60000);
+    return `<div class="job"><span class="pulse"></span>` +
+      `<span class="jd"><b>${esc(j.jobId)}</b> · ${esc(j.detail)} · ${mins} min</span>` +
+      `<button class="btn stop" onclick="stopJob('${esc(j.jobId)}')">⏹ Stop</button></div>`;
+  }).join("");
+}
+
 function render(d) {
+  renderJobs(d.jobs);
   const live = d.agents.filter((a) => a.state === "active");
   const q = d.queue.counts;
   const pubRate = d.metrics.length

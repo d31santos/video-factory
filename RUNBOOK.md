@@ -28,13 +28,20 @@ Drop the source in `inbox/` **plus** a word-timing sidecar `inbox/<name>.transcr
 (`[{"word","startMs","endMs"}]`), then `bash scripts/make_video.sh`. Without a sidecar the
 item is deferred, never crashed. Processed sources move to `inbox/processed/`.
 
-## Watch it live — the dashboard
+## Watch it live — the dashboard (now with controls)
 ```bash
-node scripts/dashboard_server.mjs        # → http://localhost:4599
+node scripts/dashboard_server.mjs        # → http://localhost:4599 (localhost-only)
 ```
 Shows agents working, which pipeline section each is in, item/format/step, an activity
 feed (started / section / finished / stopped / failed), scores vs threshold, queue, and
 recent runs. Data comes from `logs/agents/` + `logs/` — refresh-free (polls every 2 s).
+
+**Control panel (top):** type a request and press *Run prompt (AI)* to have the loop
+produce a video from it (or research topics — drafts land as needs_approval); *Scout
+topics (AI)* and *Run next pending (no AI)* are one-click; every running job has a ⏹ Stop
+button that kills the process tree. API equivalents: `POST /api/start`
+`{type:"pending"|"prompt"|"scout", prompt?, id?, format?}` and `POST /api/stop {jobId}`.
+Job output: `logs/dash_<jobId>.log`.
 
 ## The other levers
 | Task | Command |

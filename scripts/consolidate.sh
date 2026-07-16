@@ -8,7 +8,7 @@
 # proposes concrete diffs. This deterministic version produces a data summary + a proposal stub
 # so the gate and file plumbing are demonstrable without an LLM.
 set -uo pipefail
-export PATH="/c/Users/david/AppData/Local/pnpm:$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq*/ 2>/dev/null | head -1):$PATH"
+export PATH="/c/Users/david/AppData/Local/pnpm/bin:/c/Users/david/AppData/Local/pnpm:$(ls -d /c/Users/david/AppData/Local/Microsoft/WinGet/Packages/jqlang.jq*/ 2>/dev/null | head -1):$PATH"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"; cd "$ROOT"
 mkdir -p proposals
 

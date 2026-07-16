@@ -122,15 +122,29 @@ bash scripts/make_video.sh
 No transcript sidecar? The item is politely deferred (left in `inbox/`), never crashed.
 Processed sources move to `inbox/processed/`.
 
-### The dashboard (see everything live)
+### The dashboard (watch AND control the factory)
 
 ```bash
-node scripts/dashboard_server.mjs      # → http://localhost:4599
+node scripts/dashboard_server.mjs      # → http://localhost:4599 (localhost-only)
 ```
-Shows: how many agents are running, **which pipeline section each is in**, what item/format
-they're working on, a live activity feed (started / section moves / finished / stopped /
-failed), virality scores vs threshold, the queue, and recent runs. Leave it open while a
-run executes — chips move across the architecture map in real time.
+**Watch:** how many agents are running, **which pipeline section each is in**, what
+item/format they're working on, a live activity feed (started / section moves / finished /
+stopped / failed), virality scores vs threshold, the queue, and recent runs. Chips move
+across the architecture map in real time.
+
+**Control (top panel):**
+- **Prompt box + "Run prompt (AI)"** — type what you want ("Make a vertical video about X",
+  "Go find fresh topics about Y") and the loop starts an AI run based on it: it writes the
+  topic + narration itself, then produces the video end-to-end (or routes topic-research
+  requests to scout behavior, drafts landing as `needs_approval`). Needs the `claude` CLI.
+- **"Scout topics (AI)"** — one-click topic discovery run.
+- **"Run next pending (no AI)"** — kick the deterministic pipeline; format selector applies.
+- **⏹ Stop** — every running job shows a row with a stop button; it kills the whole process
+  tree. One job per type at a time (renders don't trample each other).
+
+Note: a hard stop kills mid-step, so the run's last agent card can linger as *stale* for a
+few minutes and a partially-written render may need re-rendering — the activity feed records
+the stop either way.
 
 ### Topic discovery & approvals (Mode C)
 
