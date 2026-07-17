@@ -47,15 +47,32 @@ if its virality score ≥ threshold. Below threshold → improve loop (max 2 reg
 then the human review queue. Missing/unavailable scores → human review queue. Never
 auto-post on a low or missing score.
 
-## Brand
-<!-- PLACEHOLDER — pending confirmation from the human (david).
-     Replace with the real brand palette, typography, and tone before production.
-     Defaults are neutral, high-contrast, and satisfy R9 (contrast >= 4.5:1). -->
-- Primary background: #0B0B0F (near-black)
-- Primary text / captions: #FFFFFF (white)
-- Accent 1 (hook, highlights, active caption word): #FFD400 (yellow)
-- Accent 2 (CTA button / secondary): #00E0B8 (teal)
-- Caption highlight backdrop: rgba(0,0,0,0.55)
-- Typography: Inter / system sans-serif; heavy weight (800–900) for hook & captions
-- Tone: energetic, direct, plain-spoken; short punchy sentences; no jargon, no hype,
-  no invented statistics. Confident, not clickbait.
+## Brand — Clinic of AI
+<!-- Source of truth: the company site (WebSite-CoAI tailwind.config.ts), confirmed 2026-07-17.
+     Light/cream theme, swiss grotesque type. Contrast verified for R9:
+     #000 on #fff8f3 = 20:1 · #a14000 on #fff8f3 = 6.15:1 · cream on #000 pill = 20:1.
+     #ff7a32 is 2.47:1 on cream → DECORATION ONLY, never text. -->
+
+### Palette
+- Background / surface: **#fff8f3** (warm cream); pure white #ffffff for cards
+- Primary text & captions: **#000000** (black)
+- Accent 1 (hook, active caption word): **#a14000** (deep orange)
+- Accent 2 (CTA): **#000000** pill with cream **#fff8f3** text (matches site buttons)
+- Caption card backdrop: rgba(255,255,255,0.88)
+- Scene surfaces (rotate per scene): mint #dde8dc · peach #fde4d0 · sky #dce8ee ·
+  lilac #e3dceb · blush #fcd6cf
+- Vivid orange #ff7a32: decorative touches only (shapes, underlines) — never text
+
+### Typography
+- Swiss grotesque: "Helvetica Neue", Helvetica, "Neue Haas Grotesk Text", Arial
+- Heavy weight (800–900) for hook & CTA; 700 for captions; tight letter-spacing
+  (-0.01 to -0.02 em) on display sizes; flat type — no glows or heavy shadows
+
+### Tone & content (checkable in the QA read, R12)
+- Outcome-first: talk about time saved, calmer workflows, better patient care —
+  **not the technology**. The viewer's day is the subject, the tool is a detail.
+- **Don't overtalk AI:** say "AI" at most twice per script, and never in the hook
+  unless the topic is literally about an AI product decision. Prefer concrete verbs:
+  "drafts your notes", "sorts your inbox", "flags what's urgent".
+- Warm, plain-spoken, professional; short sentences. No hype words (revolutionary,
+  game-changer, insane), no jargon, no invented statistics, no clickbait.

@@ -210,7 +210,7 @@ bash scripts/extract_frames.sh out/x.mp4 x      # QA frames → qa/x/
 |---|---|---|
 | **OpusClip (scores/publish)** | **Simulation** | Scores are synthetic; "would auto-publish" is advisory — nothing is ever posted. The real path is OpusClip's hosted MCP (beta): `claude mcp add --transport http opusclip https://mcp.opus.pro`, sign in with OAuth. Calling its tools requires the **OpusClip Pro plan** (or their free trial to test); connect your social accounts inside OpusClip itself. |
 | **Descript (voice/polish)** | **Fallback** | edge-tts does voice + word captions (works well for TTS content). Live Descript needs a token; note its API cannot render AI voices headlessly (tested), so edge-tts remains the TTS either way. |
-| **Brand** | **Placeholder** | `RULES.md ## Brand` has a neutral palette — replace with the real brand before production. |
+| **Brand** | **Live** | Clinic of AI palette (cream #fff8f3, black ink, deep-orange #a14000 accents, black CTA pill, pastel scene surfaces) + swiss type, sourced from the company site. Tone rules in `RULES.md ## Brand`: outcome-first, say "AI" ≤2× per script, never in the hook. |
 
 Everything else — rendering, QA, captions, gates, dashboard, scheduling, learning loop — is
 fully live.

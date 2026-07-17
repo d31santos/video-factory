@@ -96,7 +96,8 @@ const SceneLayer: React.FC<{
       <AbsoluteFill
         style={{
           transform: `scale(${scale})`,
-          background: `radial-gradient(120% 120% at 50% 30%, ${base}33 0%, ${brand.bg} 70%)`,
+          // Flat brand-surface fill (swiss look); scene-to-scene color change carries R5.
+          background: `radial-gradient(140% 140% at 50% 30%, ${base} 0%, ${base} 55%, ${brand.bg} 100%)`,
         }}
       />
     );
@@ -122,7 +123,7 @@ const SceneLayer: React.FC<{
               fontWeight: 800,
               textAlign: "center",
               lineHeight: 1.1,
-              textShadow: "0 4px 24px rgba(0,0,0,0.6)",
+              letterSpacing: "-0.01em", // swiss: flat type, no glow
             }}
           >
             {scene.text}
@@ -162,7 +163,8 @@ const HookOverlay: React.FC<{ hook: string; brand: Brand }> = ({
           fontWeight: 900,
           textAlign: "center",
           lineHeight: 1.05,
-          textShadow: "0 6px 30px rgba(0,0,0,0.7)",
+          letterSpacing: "-0.02em", // swiss: flat display type
+
         }}
       >
         {hook}
@@ -269,7 +271,7 @@ const CtaCard: React.FC<{ cta: string; brand: Brand }> = ({ cta, brand }) => {
           lineHeight: 1.1,
           padding: "40px 56px",
           borderRadius: 32,
-          boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
         }}
       >
         {cta}

@@ -50,13 +50,24 @@ export type Scene = z.infer<typeof sceneSchema>;
 export type Caption = z.infer<typeof captionSchema>;
 export type Brand = z.infer<typeof brandSchema>;
 
-// Defaults derived from RULES.md ## Brand (placeholder palette).
+// Clinic of AI brand (RULES.md ## Brand) — light/cream theme from the company site,
+// swiss grotesque type. Contrast-verified: #a14000 on #fff8f3 = 6.15:1 (R9 ok);
+// #ff7a32 fails 4.5:1 and is decoration-only, never text.
 export const defaultBrand: Brand = {
-  bg: "#0B0B0F",
-  text: "#FFFFFF",
-  accent1: "#FFD400",
-  accent2: "#00E0B8",
-  captionBackdrop: "rgba(0,0,0,0.55)",
+  bg: "#fff8f3",              // warm cream surface
+  text: "#000000",            // primary ink
+  accent1: "#a14000",         // deep orange — hook + active caption word
+  accent2: "#000000",         // CTA pill (black pill, cream text — like site buttons)
+  captionBackdrop: "rgba(255,255,255,0.88)", // white card on cream
   fontFamily:
-    'Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif',
+    '"Helvetica Neue", Helvetica, "Neue Haas Grotesk Text", Arial, sans-serif',
 };
+
+// Scene surface rotation (build_brief + defaults): the site's accent surfaces.
+export const brandSceneSurfaces = [
+  "#dde8dc", // mint
+  "#fde4d0", // peach
+  "#dce8ee", // sky
+  "#e3dceb", // lilac
+  "#fcd6cf", // blush
+];

@@ -45,21 +45,22 @@ const lastMs = Math.max(...captions.map((c) => c.endMs));
 // silence under the R3 limit of 1.5s (the mp3 has its own ~0.9s tail silence).
 const totalSec = Number((lastMs / 1000 + 0.6).toFixed(2));
 
-// Brand palette — mirrors src/schema.ts defaultBrand (RULES.md ## Brand).
+// Clinic of AI brand — MUST mirror src/schema.ts defaultBrand (RULES.md ## Brand).
 const brand = {
-  bg: "#0B0B0F",
-  text: "#FFFFFF",
-  accent1: "#FFD400",
-  accent2: "#00E0B8",
-  captionBackdrop: "rgba(0,0,0,0.55)",
+  bg: "#fff8f3",
+  text: "#000000",
+  accent1: "#a14000",
+  accent2: "#000000",
+  captionBackdrop: "rgba(255,255,255,0.88)",
   fontFamily:
-    'Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif',
+    '"Helvetica Neue", Helvetica, "Neue Haas Grotesk Text", Arial, sans-serif',
 };
 
 // Storyboard: an intro card (title) + one card per key point. Sized to fill
-// the narration evenly so there is no black tail (keeps R5 holding).
+// the narration evenly so there is no bare tail (keeps R5 holding).
 const sceneTexts = [topic.title, ...(topic.keyPoints ?? [])];
-const palette = ["#00E0B8", "#FFD400", "#3A7BFF", "#FF5C7A", "#9B5CFF"];
+// Scene surfaces = the site's accent surfaces (mint/peach/sky/lilac/blush).
+const palette = ["#dde8dc", "#fde4d0", "#dce8ee", "#e3dceb", "#fcd6cf"];
 const per = totalSec / sceneTexts.length;
 const scenes = sceneTexts.map((text, i) => ({
   text,

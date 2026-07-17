@@ -73,7 +73,7 @@ entry → voice + transcript → build → render → QA (R1–R12) → score (R
 | Voice (edge-tts) | ✅ live (fallback by design) | optional: Descript/ElevenLabs |
 | **OpusClip** (real scores + publishing) | 🔶 simulation | OpusClip **Pro** plan + `claude mcp add --transport http opusclip https://mcp.opus.pro` (OAuth) |
 | **Descript** (audio polish/transcripts) | 🔶 edge-tts fallback | `DESCRIPT_API_TOKEN`, or the official hosted MCP |
-| Brand palette/tone | 🔶 placeholder | fill in `RULES.md ## Brand` |
+| Brand palette/tone | ✅ live | Clinic of AI palette (cream/black/deep-orange, swiss type) from the company site; tone rules incl. "don't overtalk AI" in `RULES.md ## Brand` |
 
 Until OpusClip is connected, scores are **simulated and nothing is ever posted** —
 "would auto-publish" in the logs is advisory only.

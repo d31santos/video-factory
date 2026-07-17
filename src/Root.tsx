@@ -6,15 +6,16 @@ import { videoSchema, defaultBrand, FORMATS, type VideoProps, type FormatKey } f
 // Self-contained demo props so `remotion render` works with zero setup.
 // Real runs overwrite these per topic via --props (WORKFLOW steps 2–8).
 const demoProps: Omit<VideoProps, "format"> = {
-  hook: "AI saves clinicians hours",
+  hook: "Hours back in your day",
   scenes: [
-    { text: "AI drafts your visit notes", visual: "#00E0B8", durationSec: 3 },
+    // Brand accent surfaces (RULES.md ## Brand): mint / peach / sky / blush.
+    { text: "Your visit notes, drafted for you", visual: "#dde8dc", durationSec: 3 },
     // Hybrid path: this scene's background is a HyperFrames-rendered HTML clip.
     { text: "", visual: "broll/hf_scene.mp4", durationSec: 3 },
-    { text: "Guidelines, right when you need them", visual: "#3A7BFF", durationSec: 3 },
-    { text: "", visual: "#0B0B0F", durationSec: 3 },
+    { text: "Guidelines, right when you need them", visual: "#dce8ee", durationSec: 3 },
+    { text: "", visual: "#fcd6cf", durationSec: 3 },
   ],
-  cta: "Follow for one AI workflow a day",
+  cta: "Follow for one workflow a day",
   captions: [
     { word: "AI", startMs: 0, endMs: 700 },
     { word: "saves", startMs: 700, endMs: 1400 },

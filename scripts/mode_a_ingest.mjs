@@ -60,10 +60,12 @@ const captions = JSON.parse(readFileSync(sidecar, "utf8"));
 const lastMs = captions.length ? Math.max(...captions.map((c) => c.endMs)) : dur * 1000;
 const totalSec = Math.min(dur, lastMs / 1000 + 0.6);
 
+// Clinic of AI brand — MUST mirror src/schema.ts defaultBrand (RULES.md ## Brand).
+// Mode A captions sit over real footage, so the white card backdrop carries contrast.
 const brand = {
-  bg: "#0B0B0F", text: "#FFFFFF", accent1: "#FFD400", accent2: "#00E0B8",
-  captionBackdrop: "rgba(0,0,0,0.55)",
-  fontFamily: 'Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif',
+  bg: "#fff8f3", text: "#000000", accent1: "#a14000", accent2: "#000000",
+  captionBackdrop: "rgba(255,255,255,0.88)",
+  fontFamily: '"Helvetica Neue", Helvetica, "Neue Haas Grotesk Text", Arial, sans-serif',
 };
 
 // Repurpose brief: source footage IS the scene background (its own motion satisfies R5);

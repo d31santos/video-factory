@@ -5,9 +5,16 @@ on any conflict, RULES.md wins. This file is distilled from `qa/*/retro.md` by t
 run; the loop may only *propose* edits (to `proposals/`) — a human promotes them.
 
 ## Hook (first 2 s) — the single highest-leverage choice
-- Lead with the payoff or a sharp tension: "The one AI mistake that costs clinics hours."
+- Lead with the payoff or a sharp tension: "The mistake that costs clinics hours every week."
 - ≤ 7 words on screen; concrete noun + stakes. No throat-clearing ("In this video…").
 - Number-led hooks ("3 ways…") set expectations and pace well.
+- Per Brand (RULES.md): no "AI" in the hook unless the topic is literally an AI decision.
+
+## Language — outcome-first, tech-light (Brand rule, binding via R12)
+- The subject is the viewer's day, not the tool: "your notes draft themselves while you
+  see the next patient" beats "AI-powered documentation automation".
+- "AI" appears ≤ 2× per script. Swap in concrete verbs: drafts, sorts, flags, surfaces.
+- Cut tech nouns (model, LLM, algorithm, automation) unless the point depends on them.
 
 ## Opening pace
 - First scene ≤ 3 s; first visual change within 2 s. Don't linger on a title card.
