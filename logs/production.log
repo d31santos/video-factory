@@ -6,3 +6,4 @@
 2026-07-11T15:24:06Z demo-004 mode=B fmt=vertical render=out/demo-004.mp4 dur=47.786667s qa=PASS score=78/75 regens=1 published=true
 2026-07-16T22:48:50Z demo-004 mode=B fmt=vertical render=out/demo-004.mp4 dur=47.786667s qa=PASS score=78/75 regens=1 published=true
 2026-07-16T22:58:53Z inbox-talk mode=A fmt=vertical render=out/inbox-talk.mp4 dur=28.928000s qa=PASS score=75/75 regens=1 published=true
+[2026-07-18T10:04:36Z] dash-20260718T095455 | Meta Ads: how it works and how to attract clients | Mode B | vertical 1080x1920 49.5s | R1-R12 PASS | Descript: fallback (edge-tts) | OpusClip: simulated, score 58→67→76 (threshold 75, 2 regens) | WOULD-AUTO-PUBLISH (sim) | done

@@ -11,7 +11,7 @@ import { createServer } from "node:http";
 import { spawn, execFile } from "node:child_process";
 import {
   readFileSync, readdirSync, existsSync, writeFileSync, rmSync,
-  appendFileSync, mkdirSync, createWriteStream,
+  appendFileSync, mkdirSync, createWriteStream, statSync, createReadStream,
 } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -76,6 +76,7 @@ const clearCard = (agent) => rmSync(join(AGENT_DIR, `${agent}.json`), { force: t
 
 // ---------- job registry (dashboard-launched processes) ----------
 const jobs = new Map(); // jobId → {jobId,type,pid,child,startedAt,detail,log,stopping}
+const recentJobs = []; // finished jobs (newest first) with their log-tail summary
 let jobSeq = 0;
 
 function launch(type, { prompt, id, format, video } = {}) {
@@ -153,9 +154,20 @@ function launch(type, { prompt, id, format, video } = {}) {
   child.on("exit", (code, signal) => {
     logStream.end();
     jobs.delete(jobId);
+    const status = job.stopping || signal ? "stopped" : code === 0 ? "finished" : "failed";
+    // Keep the tail of the job's log as its visible result — this is how the
+    // agent's final summary (or the error) reaches the dashboard.
+    let summary = "";
+    try {
+      summary = readFileSync(logPath, "utf8").trim().split(/\r?\n/)
+        .filter((l) => l && !/^(Rendered|Encoded|Bundling|\[2K|\s*█)/.test(l))
+        .slice(-14).join("\n").slice(-1200);
+    } catch {}
+    recentJobs.unshift({ jobId, type, detail, status, exit: code ?? String(signal),
+      endedAt: new Date().toISOString(), summary, log: `logs/${logPath.split(/[\\/]/).pop()}` });
+    if (recentJobs.length > 8) recentJobs.pop();
     if (type === "prompt") {
       clearCard(agent);
-      const status = job.stopping || signal ? "stopped" : code === 0 ? "finished" : "failed";
       emitEvent({ agent, type: status, item: null, section: "agentic", note: `exit ${code ?? signal}` });
     }
   });
@@ -221,10 +233,24 @@ function status() {
     .map((l) => { try { return JSON.parse(l); } catch { return null; } })
     .filter(Boolean).slice(-20).reverse();
 
+  const outDir = join(ROOT, "out");
+  const outputs = existsSync(outDir)
+    ? readdirSync(outDir)
+        .filter((f) => /\.mp4$/i.test(f))
+        .map((f) => {
+          const s = statSync(join(outDir, f));
+          return { name: f, bytes: s.size, mtime: s.mtimeMs };
+        })
+        .sort((a, b) => b.mtime - a.mtime)
+        .slice(0, 12)
+    : [];
+
   return {
     now: new Date().toISOString(),
     agents: agents(),
     events,
+    outputs,
+    recentJobs,
     jobs: [...jobs.values()].map(({ jobId, type, pid, startedAt, detail }) => ({ jobId, type, pid, startedAt, detail })),
     queue: {
       counts,
@@ -286,6 +312,28 @@ const server = createServer(async (req, res) => {
     const { jobId } = await body(req);
     const r = stopJob(jobId);
     return json(res, r.error ? 404 : 200, r);
+  }
+
+  // Stream a finished render (video player / download). Basename-only → no traversal.
+  if (req.method === "GET" && req.url?.startsWith("/video/")) {
+    const name = decodeURIComponent(req.url.slice(7)).replace(/[\\/]/g, "");
+    const file = join(ROOT, "out", name);
+    if (!/\.mp4$/i.test(name) || !existsSync(file)) { res.writeHead(404); res.end("not found"); return; }
+    const { size } = statSync(file);
+    const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? "");
+    if (range) {
+      const start = range[1] ? Number(range[1]) : 0;
+      const end = range[2] ? Math.min(Number(range[2]), size - 1) : size - 1;
+      res.writeHead(206, {
+        "Content-Type": "video/mp4", "Accept-Ranges": "bytes",
+        "Content-Range": `bytes ${start}-${end}/${size}`, "Content-Length": end - start + 1,
+      });
+      createReadStream(file, { start, end }).pipe(res);
+    } else {
+      res.writeHead(200, { "Content-Type": "video/mp4", "Accept-Ranges": "bytes", "Content-Length": size });
+      createReadStream(file).pipe(res);
+    }
+    return;
   }
 
   if (req.url === "/" || req.url === "/index.html") {

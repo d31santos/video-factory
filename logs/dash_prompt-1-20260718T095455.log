@@ -1,0 +1,14 @@
+**Run complete.** Here's the summary:
+
+---
+
+**Video: "The mistake that burns your ad budget"** (Meta Ads)
+- **Output:** `out/dash-20260718T095455.mp4` — 1080x1920, 30fps, h264, 49.5s, 3.9 MB
+- **Format:** Vertical (Shorts/Reels/TikTok)
+- **Narration:** 120 words, edge-tts (en-US-GuyNeural), with word-level captions
+- **QA:** R1-R12 all PASS; R13 fallback (no Descript token); R15 passed on attempt 2
+- **OpusClip (simulated):** Score 58 → 67 → 76 (threshold 75) after 2 hook revisions
+- **Publish gate:** WOULD-AUTO-PUBLISH (simulation mode, nothing actually posted)
+- **Status:** `done` in `topics/queue.json`
+
+The video covers how Meta ads work (goal setting, audience targeting, ad placements) and how to attract clients (strong hook creative, testing strategy, doubling down on winners). All files are in `qa/dash-20260718T095455/` for review.

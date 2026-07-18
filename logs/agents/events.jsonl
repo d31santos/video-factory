@@ -60,3 +60,8 @@
 {"ts":"2026-07-16T22:58:52.698Z","agent":"make_video-665","type":"section","section":"score","step":"OpusClip eval, attempt 1","item":"inbox-talk"}
 {"ts":"2026-07-16T22:58:52.931Z","agent":"make_video-665","type":"section","section":"close","step":"metrics + retro + queue close","item":"inbox-talk"}
 {"ts":"2026-07-16T22:58:53.262Z","agent":"make_video-665","type":"finished","item":"inbox-talk","section":"close","note":"exit 0"}
+{"ts":"2026-07-18T09:54:55.259Z","agent":"dash_prompt-1-20260718T095455","type":"started","item":null,"section":"agentic"}
+{"ts":"2026-07-18T10:05:22.235Z","agent":"dash_prompt-1-20260718T095455","type":"finished","item":null,"section":"agentic","note":"exit 0"}
+{"ts":"2026-07-18T10:14:40.523Z","agent":"make_video-1242","type":"started","item":"","section":"preflight"}
+{"ts":"2026-07-18T10:14:40.524Z","agent":"make_video-1242","type":"section","section":"preflight","step":"toolchain + service health","item":""}
+{"ts":"2026-07-18T10:14:41.233Z","agent":"make_video-1242","type":"finished","item":"","section":"preflight","note":"exit 0"}

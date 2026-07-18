@@ -1,0 +1,650 @@
+{
+  "mode": "B",
+  "hook": "Your ad budget, rescued in 50 seconds",
+  "scenes": [
+    {
+      "text": "The mistake that burns your ad budget",
+      "visual": "#dde8dc",
+      "durationSec": 9.89
+    },
+    {
+      "text": "Pick one goal: leads, sales, or traffic",
+      "visual": "#fde4d0",
+      "durationSec": 9.89
+    },
+    {
+      "text": "Define your audience by interest, location, and behavior",
+      "visual": "#dce8ee",
+      "durationSec": 9.89
+    },
+    {
+      "text": "Strong hook, clear benefit, one call to action",
+      "visual": "#e3dceb",
+      "durationSec": 9.89
+    },
+    {
+      "text": "Start with five dollars a day, test three creatives, cut losers fast",
+      "visual": "#fcd6cf",
+      "durationSec": 9.89
+    }
+  ],
+  "cta": "Save this before your next ad campaign",
+  "captions": [
+    {
+      "word": "The",
+      "startMs": 100,
+      "endMs": 212
+    },
+    {
+      "word": "mistake",
+      "startMs": 237,
+      "endMs": 637
+    },
+    {
+      "word": "that",
+      "startMs": 662,
+      "endMs": 825
+    },
+    {
+      "word": "burns",
+      "startMs": 850,
+      "endMs": 1137
+    },
+    {
+      "word": "your",
+      "startMs": 1150,
+      "endMs": 1312
+    },
+    {
+      "word": "ad",
+      "startMs": 1337,
+      "endMs": 1487
+    },
+    {
+      "word": "budget",
+      "startMs": 1512,
+      "endMs": 1887
+    },
+    {
+      "word": "every",
+      "startMs": 1900,
+      "endMs": 2112
+    },
+    {
+      "word": "month",
+      "startMs": 2137,
+      "endMs": 2550
+    },
+    {
+      "word": "Most",
+      "startMs": 3425,
+      "endMs": 3737
+    },
+    {
+      "word": "businesses",
+      "startMs": 3750,
+      "endMs": 4225
+    },
+    {
+      "word": "launch",
+      "startMs": 4250,
+      "endMs": 4512
+    },
+    {
+      "word": "Meta",
+      "startMs": 4537,
+      "endMs": 4837
+    },
+    {
+      "word": "ads",
+      "startMs": 4850,
+      "endMs": 5075
+    },
+    {
+      "word": "without",
+      "startMs": 5087,
+      "endMs": 5362
+    },
+    {
+      "word": "a",
+      "startMs": 5387,
+      "endMs": 5450
+    },
+    {
+      "word": "clear",
+      "startMs": 5462,
+      "endMs": 5700
+    },
+    {
+      "word": "funnel",
+      "startMs": 5725,
+      "endMs": 6050
+    },
+    {
+      "word": "and",
+      "startMs": 6262,
+      "endMs": 6362
+    },
+    {
+      "word": "wonder",
+      "startMs": 6387,
+      "endMs": 6687
+    },
+    {
+      "word": "why",
+      "startMs": 6712,
+      "endMs": 6825
+    },
+    {
+      "word": "nobody",
+      "startMs": 6850,
+      "endMs": 7225
+    },
+    {
+      "word": "buys",
+      "startMs": 7250,
+      "endMs": 7725
+    },
+    {
+      "word": "Here",
+      "startMs": 8600,
+      "endMs": 8875
+    },
+    {
+      "word": "is",
+      "startMs": 8887,
+      "endMs": 9012
+    },
+    {
+      "word": "how",
+      "startMs": 9037,
+      "endMs": 9212
+    },
+    {
+      "word": "it",
+      "startMs": 9225,
+      "endMs": 9325
+    },
+    {
+      "word": "actually",
+      "startMs": 9337,
+      "endMs": 9812
+    },
+    {
+      "word": "works",
+      "startMs": 9837,
+      "endMs": 10350
+    },
+    {
+      "word": "First",
+      "startMs": 11212,
+      "endMs": 11600
+    },
+    {
+      "word": "you",
+      "startMs": 11850,
+      "endMs": 11975
+    },
+    {
+      "word": "pick",
+      "startMs": 12000,
+      "endMs": 12187
+    },
+    {
+      "word": "one",
+      "startMs": 12212,
+      "endMs": 12437
+    },
+    {
+      "word": "goal",
+      "startMs": 12462,
+      "endMs": 12750
+    },
+    {
+      "word": "leads",
+      "startMs": 12925,
+      "endMs": 13275
+    },
+    {
+      "word": "sales",
+      "startMs": 13462,
+      "endMs": 13887
+    },
+    {
+      "word": "or",
+      "startMs": 14100,
+      "endMs": 14225
+    },
+    {
+      "word": "traffic",
+      "startMs": 14250,
+      "endMs": 14750
+    },
+    {
+      "word": "Then",
+      "startMs": 15625,
+      "endMs": 15862
+    },
+    {
+      "word": "you",
+      "startMs": 15887,
+      "endMs": 15987
+    },
+    {
+      "word": "define",
+      "startMs": 16012,
+      "endMs": 16375
+    },
+    {
+      "word": "your",
+      "startMs": 16400,
+      "endMs": 16562
+    },
+    {
+      "word": "audience",
+      "startMs": 16575,
+      "endMs": 16987
+    },
+    {
+      "word": "by",
+      "startMs": 17000,
+      "endMs": 17175
+    },
+    {
+      "word": "interest",
+      "startMs": 17200,
+      "endMs": 17637
+    },
+    {
+      "word": "location",
+      "startMs": 17787,
+      "endMs": 18325
+    },
+    {
+      "word": "and",
+      "startMs": 18487,
+      "endMs": 18575
+    },
+    {
+      "word": "behavior",
+      "startMs": 18587,
+      "endMs": 19212
+    },
+    {
+      "word": "Meta",
+      "startMs": 20087,
+      "endMs": 20425
+    },
+    {
+      "word": "finds",
+      "startMs": 20450,
+      "endMs": 20775
+    },
+    {
+      "word": "people",
+      "startMs": 20800,
+      "endMs": 21162
+    },
+    {
+      "word": "who",
+      "startMs": 21187,
+      "endMs": 21300
+    },
+    {
+      "word": "match",
+      "startMs": 21312,
+      "endMs": 21775
+    },
+    {
+      "word": "Next",
+      "startMs": 22650,
+      "endMs": 23037
+    },
+    {
+      "word": "your",
+      "startMs": 23187,
+      "endMs": 23350
+    },
+    {
+      "word": "ad",
+      "startMs": 23375,
+      "endMs": 23537
+    },
+    {
+      "word": "shows",
+      "startMs": 23562,
+      "endMs": 23837
+    },
+    {
+      "word": "up",
+      "startMs": 23862,
+      "endMs": 23975
+    },
+    {
+      "word": "in",
+      "startMs": 24000,
+      "endMs": 24062
+    },
+    {
+      "word": "their",
+      "startMs": 24075,
+      "endMs": 24212
+    },
+    {
+      "word": "feed",
+      "startMs": 24237,
+      "endMs": 24587
+    },
+    {
+      "word": "stories",
+      "startMs": 24775,
+      "endMs": 25250
+    },
+    {
+      "word": "or",
+      "startMs": 25425,
+      "endMs": 25575
+    },
+    {
+      "word": "reels",
+      "startMs": 25600,
+      "endMs": 26050
+    },
+    {
+      "word": "The",
+      "startMs": 26925,
+      "endMs": 27062
+    },
+    {
+      "word": "creative",
+      "startMs": 27087,
+      "endMs": 27550
+    },
+    {
+      "word": "has",
+      "startMs": 27575,
+      "endMs": 27762
+    },
+    {
+      "word": "three",
+      "startMs": 27787,
+      "endMs": 28012
+    },
+    {
+      "word": "seconds",
+      "startMs": 28037,
+      "endMs": 28500
+    },
+    {
+      "word": "to",
+      "startMs": 28525,
+      "endMs": 28625
+    },
+    {
+      "word": "stop",
+      "startMs": 28650,
+      "endMs": 28937
+    },
+    {
+      "word": "the",
+      "startMs": 28962,
+      "endMs": 29062
+    },
+    {
+      "word": "scroll",
+      "startMs": 29075,
+      "endMs": 29587
+    },
+    {
+      "word": "A",
+      "startMs": 30462,
+      "endMs": 30600
+    },
+    {
+      "word": "strong",
+      "startMs": 30625,
+      "endMs": 30962
+    },
+    {
+      "word": "hook",
+      "startMs": 30987,
+      "endMs": 31250
+    },
+    {
+      "word": "a",
+      "startMs": 31437,
+      "endMs": 31500
+    },
+    {
+      "word": "clear",
+      "startMs": 31525,
+      "endMs": 31787
+    },
+    {
+      "word": "benefit",
+      "startMs": 31800,
+      "endMs": 32262
+    },
+    {
+      "word": "and",
+      "startMs": 32425,
+      "endMs": 32550
+    },
+    {
+      "word": "one",
+      "startMs": 32575,
+      "endMs": 32775
+    },
+    {
+      "word": "call",
+      "startMs": 32787,
+      "endMs": 33012
+    },
+    {
+      "word": "to",
+      "startMs": 33037,
+      "endMs": 33150
+    },
+    {
+      "word": "action",
+      "startMs": 33162,
+      "endMs": 33625
+    },
+    {
+      "word": "That",
+      "startMs": 34512,
+      "endMs": 34875
+    },
+    {
+      "word": "is",
+      "startMs": 34900,
+      "endMs": 35037
+    },
+    {
+      "word": "the",
+      "startMs": 35062,
+      "endMs": 35175
+    },
+    {
+      "word": "formula",
+      "startMs": 35187,
+      "endMs": 35837
+    },
+    {
+      "word": "Start",
+      "startMs": 36700,
+      "endMs": 37062
+    },
+    {
+      "word": "with",
+      "startMs": 37087,
+      "endMs": 37225
+    },
+    {
+      "word": "five",
+      "startMs": 37250,
+      "endMs": 37475
+    },
+    {
+      "word": "dollars",
+      "startMs": 37487,
+      "endMs": 37812
+    },
+    {
+      "word": "a",
+      "startMs": 37837,
+      "endMs": 37900
+    },
+    {
+      "word": "day",
+      "startMs": 37925,
+      "endMs": 38162
+    },
+    {
+      "word": "test",
+      "startMs": 38275,
+      "endMs": 38512
+    },
+    {
+      "word": "three",
+      "startMs": 38537,
+      "endMs": 38737
+    },
+    {
+      "word": "creatives",
+      "startMs": 38762,
+      "endMs": 39312
+    },
+    {
+      "word": "and",
+      "startMs": 39462,
+      "endMs": 39612
+    },
+    {
+      "word": "cut",
+      "startMs": 39637,
+      "endMs": 39812
+    },
+    {
+      "word": "the",
+      "startMs": 39837,
+      "endMs": 39937
+    },
+    {
+      "word": "losers",
+      "startMs": 39962,
+      "endMs": 40325
+    },
+    {
+      "word": "fast",
+      "startMs": 40350,
+      "endMs": 40800
+    },
+    {
+      "word": "Double",
+      "startMs": 41687,
+      "endMs": 42025
+    },
+    {
+      "word": "down",
+      "startMs": 42050,
+      "endMs": 42325
+    },
+    {
+      "word": "on",
+      "startMs": 42350,
+      "endMs": 42475
+    },
+    {
+      "word": "what",
+      "startMs": 42500,
+      "endMs": 42675
+    },
+    {
+      "word": "converts",
+      "startMs": 42700,
+      "endMs": 43337
+    },
+    {
+      "word": "Your",
+      "startMs": 44200,
+      "endMs": 44400
+    },
+    {
+      "word": "next",
+      "startMs": 44425,
+      "endMs": 44712
+    },
+    {
+      "word": "client",
+      "startMs": 44737,
+      "endMs": 45175
+    },
+    {
+      "word": "is",
+      "startMs": 45200,
+      "endMs": 45337
+    },
+    {
+      "word": "already",
+      "startMs": 45362,
+      "endMs": 45775
+    },
+    {
+      "word": "scrolling",
+      "startMs": 45787,
+      "endMs": 46312
+    },
+    {
+      "word": "Make",
+      "startMs": 47200,
+      "endMs": 47475
+    },
+    {
+      "word": "sure",
+      "startMs": 47500,
+      "endMs": 47700
+    },
+    {
+      "word": "they",
+      "startMs": 47725,
+      "endMs": 47837
+    },
+    {
+      "word": "stop",
+      "startMs": 47862,
+      "endMs": 48200
+    },
+    {
+      "word": "on",
+      "startMs": 48212,
+      "endMs": 48337
+    },
+    {
+      "word": "your",
+      "startMs": 48362,
+      "endMs": 48525
+    },
+    {
+      "word": "ad",
+      "startMs": 48550,
+      "endMs": 48850
+    }
+  ],
+  "audioSrc": "audio/dash-20260718T095455.mp3",
+  "brand": {
+    "bg": "#fff8f3",
+    "text": "#000000",
+    "accent1": "#a14000",
+    "accent2": "#000000",
+    "captionBackdrop": "rgba(255,255,255,0.88)",
+    "fontFamily": "\"Helvetica Neue\", Helvetica, \"Neue Haas Grotesk Text\", Arial, sans-serif"
+  },
+  "format": "vertical",
+  "assetLog": [
+    {
+      "file": "audio/dash-20260718T095455.mp3",
+      "provenance": "edge-tts (fallback voice+transcript)"
+    }
+  ]
+}

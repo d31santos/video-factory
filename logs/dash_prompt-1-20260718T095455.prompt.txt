@@ -1,0 +1,5 @@
+A human submitted this request from the factory dashboard:
+
+"Generate a short video about meta ads, how does it work and how to atract clients to my business with it"
+
+If it asks to produce a video: create a topic entry in topics/queue.json (id "dash-20260718T095455", status "pending"), write the 100-140 word narration to assets/audio/dash-20260718T095455.txt, then execute WORKFLOW.md end-to-end for that item. If it asks to research/find topics, run the scout behavior instead: draft briefs into topics/queue.json as needs_approval, never pending. Obey CLAUDE.md and RULES.md. One item, then stop.
