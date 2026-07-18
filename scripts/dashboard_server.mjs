@@ -115,12 +115,25 @@ function launch(type, { prompt, id, format, video } = {}) {
         : "";
       const instructions =
         `A human submitted this request from the factory dashboard:\n\n"${prompt.trim()}"\n\n` +
-        `If it asks to produce a video: create a topic entry in topics/queue.json ` +
-        `(id "dash-${ts}", status "pending"), write the 100-140 word narration to ` +
-        `assets/audio/dash-${ts}.txt, then execute WORKFLOW.md end-to-end for that item` +
-        `${format ? ` with format ${format}` : ""}. If it asks to research/find topics, run the ` +
-        `scout behavior instead: draft briefs into topics/queue.json as needs_approval, never pending. ` +
-        `Obey CLAUDE.md and RULES.md. One item, then stop.` + videoNote;
+        `RESEARCH FIRST — every production run starts with it:\n` +
+        `1. Use WebSearch/WebFetch to research the topic. Collect 3-6 concrete, verifiable\n` +
+        `   facts/numbers/examples WITH source URLs. Write them to qa/dash-${ts}/research.md\n` +
+        `   (fact -> source per line). The narration may only state facts from that file (R10)\n` +
+        `   - nothing invented; skip any fact you could not verify.\n\n` +
+        `Then, depending on what the request asks:\n` +
+        `- PRODUCE A GIVEN TOPIC: create a topic entry in topics/queue.json (id "dash-${ts}",\n` +
+        `  status "pending", keyPoints taken from the research), write the 100-140 word\n` +
+        `  narration (per HEURISTICS.md and RULES.md ## Brand tone) to assets/audio/dash-${ts}.txt,\n` +
+        `  then execute WORKFLOW.md end-to-end for that item${format ? ` with format ${format}` : ""}.\n` +
+        `- FIND/CHOOSE A TOPIC AND MAKE THE VIDEO (e.g. "pick the best one"): research the\n` +
+        `  space, shortlist 3-5 candidate topics in qa/dash-${ts}/research.md with a one-line\n` +
+        `  rationale each, CHOOSE the strongest per HEURISTICS.md (hook potential first) and\n` +
+        `  record why. Produce the chosen one as above (the human's request IS the approval).\n` +
+        `  Add the non-chosen candidates to topics/queue.json as needs_approval drafts so\n` +
+        `  they are not lost.\n` +
+        `- RESEARCH ONLY (no production intent): scout behavior - draft briefs into\n` +
+        `  topics/queue.json as needs_approval, never pending, and stop.\n\n` +
+        `Obey CLAUDE.md and RULES.md. One produced item max, then stop.` + videoNote;
       writeFileSync(promptFile, instructions);
       detail = `prompt: ${prompt.trim().slice(0, 80)}`;
       child = spawn(
@@ -144,6 +157,19 @@ function launch(type, { prompt, id, format, video } = {}) {
   const agent = `dash_${jobId}`;
   const job = { jobId, type, pid: child.pid, child, startedAt: new Date().toISOString(), detail, log: logPath, stopping: false };
   jobs.set(jobId, job);
+
+  // Hard cap per job — a silently hung run (stuck API call, dead child) must die on
+  // its own instead of blocking its job-type slot forever (CLAUDE.md: every step
+  // gets a timeout). Research-driven agentic runs are the longest.
+  const TIMEOUT_MIN = { pending: 30, scout: 30, prompt: 45 }[type] ?? 30;
+  const killTimer = setTimeout(() => {
+    if (!jobs.has(jobId)) return;
+    job.stopping = true;
+    emitEvent({ agent, type: "stopped", note: `timeout after ${TIMEOUT_MIN} min — killed by watchdog` });
+    if (process.platform === "win32") execFile("taskkill", ["/PID", String(job.pid), "/T", "/F"], () => {});
+    else { try { process.kill(-job.pid, "SIGKILL"); } catch { try { child.kill("SIGKILL"); } catch {} } }
+  }, TIMEOUT_MIN * 60_000);
+  killTimer.unref?.();
 
   // Deterministic runs & scout write their own heartbeats; the raw claude job needs a card.
   if (type === "prompt") {

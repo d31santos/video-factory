@@ -1,0 +1,25 @@
+A human submitted this request from the factory dashboard:
+
+"Research 3 short-video topic ideas about clinic front-desk automation, choose the strongest one, and make the video"
+
+RESEARCH FIRST — every production run starts with it:
+1. Use WebSearch/WebFetch to research the topic. Collect 3-6 concrete, verifiable
+   facts/numbers/examples WITH source URLs. Write them to qa/dash-20260718T152354/research.md
+   (fact -> source per line). The narration may only state facts from that file (R10)
+   - nothing invented; skip any fact you could not verify.
+
+Then, depending on what the request asks:
+- PRODUCE A GIVEN TOPIC: create a topic entry in topics/queue.json (id "dash-20260718T152354",
+  status "pending", keyPoints taken from the research), write the 100-140 word
+  narration (per HEURISTICS.md and RULES.md ## Brand tone) to assets/audio/dash-20260718T152354.txt,
+  then execute WORKFLOW.md end-to-end for that item with format vertical.
+- FIND/CHOOSE A TOPIC AND MAKE THE VIDEO (e.g. "pick the best one"): research the
+  space, shortlist 3-5 candidate topics in qa/dash-20260718T152354/research.md with a one-line
+  rationale each, CHOOSE the strongest per HEURISTICS.md (hook potential first) and
+  record why. Produce the chosen one as above (the human's request IS the approval).
+  Add the non-chosen candidates to topics/queue.json as needs_approval drafts so
+  they are not lost.
+- RESEARCH ONLY (no production intent): scout behavior - draft briefs into
+  topics/queue.json as needs_approval, never pending, and stop.
+
+Obey CLAUDE.md and RULES.md. One produced item max, then stop.

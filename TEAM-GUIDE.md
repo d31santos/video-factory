@@ -133,10 +133,17 @@ stopped / failed), virality scores vs threshold, the queue, and recent runs. Chi
 across the architecture map in real time.
 
 **Control (top panel):**
-- **Prompt box + "Run prompt (AI)"** — type what you want ("Make a vertical video about X",
-  "Go find fresh topics about Y") and the loop starts an AI run based on it: it writes the
-  topic + narration itself, then produces the video end-to-end (or routes topic-research
-  requests to scout behavior, drafts landing as `needs_approval`). Needs the `claude` CLI.
+- **Prompt box + "Run prompt (AI)"** — type what you want and the loop starts an AI run.
+  **Every production run researches first**: it web-searches the topic, collects 3–6
+  verifiable facts with source URLs into `qa/<id>/research.md`, and the narration may only
+  use those facts (R10). Three request shapes:
+  - *"Make a video about X"* → research X, then produce end-to-end.
+  - *"Find topics about Y and make the best one"* → researches the space, shortlists 3–5
+    candidates with rationale, picks the strongest (hook potential first), produces it, and
+    parks the runners-up in the queue as `needs_approval` drafts for later.
+  - *"Just research topics about Z"* (no production intent) → scout behavior only; drafts
+    land as `needs_approval`, nothing is produced.
+  Needs the `claude` CLI.
 - **Attach a video** (🎞, optional 📝 transcript sidecar) — uploads into `inbox/` and the run
   becomes **Mode A**: your footage is repurposed instead of generating from scratch. Works
   with both buttons: with *Run prompt (AI)* the AI is told to repurpose that exact file per

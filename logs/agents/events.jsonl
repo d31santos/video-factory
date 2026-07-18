@@ -65,3 +65,12 @@
 {"ts":"2026-07-18T10:14:40.523Z","agent":"make_video-1242","type":"started","item":"","section":"preflight"}
 {"ts":"2026-07-18T10:14:40.524Z","agent":"make_video-1242","type":"section","section":"preflight","step":"toolchain + service health","item":""}
 {"ts":"2026-07-18T10:14:41.233Z","agent":"make_video-1242","type":"finished","item":"","section":"preflight","note":"exit 0"}
+{"ts":"2026-07-18T10:42:11.809Z","agent":"scout-1428","type":"started","item":null,"section":"scout"}
+{"ts":"2026-07-18T10:42:11.809Z","agent":"scout-1428","type":"section","section":"scout","step":"web search → draft briefs (needs_approval)","item":null}
+{"ts":"2026-07-18T10:42:16.844Z","agent":"scout-1428","type":"finished","item":null,"section":"scout","note":"exit 0"}
+{"ts":"2026-07-18T14:20:56.256Z","agent":"dash_prompt-1-20260718T142056","type":"started","item":null,"section":"agentic"}
+{"ts":"2026-07-18T15:23:08.891Z","agent":"dash_prompt-1-20260718T142056","type":"stopped","note":"stop requested from dashboard"}
+{"ts":"2026-07-18T15:23:09.123Z","agent":"dash_prompt-1-20260718T142056","type":"stopped","item":null,"section":"agentic","note":"exit 1"}
+{"ts":"2026-07-18T15:23:54.514Z","agent":"dash_prompt-1-20260718T152354","type":"started","item":null,"section":"agentic"}
+{"ts":"2026-07-18T16:08:54.528Z","agent":"dash_prompt-1-20260718T152354","type":"stopped","note":"timeout after 45 min — killed by watchdog"}
+{"ts":"2026-07-18T16:08:54.795Z","agent":"dash_prompt-1-20260718T152354","type":"stopped","item":null,"section":"agentic","note":"exit 1"}

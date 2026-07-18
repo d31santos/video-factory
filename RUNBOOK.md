@@ -36,10 +36,12 @@ Shows agents working, which pipeline section each is in, item/format/step, an ac
 feed (started / section / finished / stopped / failed), scores vs threshold, queue, and
 recent runs. Data comes from `logs/agents/` + `logs/` — refresh-free (polls every 2 s).
 
-**Control panel (top):** type a request and press *Run prompt (AI)* to have the loop
-produce a video from it (or research topics — drafts land as needs_approval); *Scout
-topics (AI)* and *Run next pending (no AI)* are one-click; every running job has a ⏹ Stop
-button that kills the process tree. **Attach a video** (🎞 + optional 📝 transcript .json)
+**Control panel (top):** type a request and press *Run prompt (AI)* — the loop
+**researches first** (web facts + sources → `qa/<id>/research.md`; narration constrained
+to them per R10), then produces. "Find topics and make the best one" → shortlists,
+picks per HEURISTICS, produces the winner, parks runners-up as needs_approval. Research-only
+requests draft without producing. *Scout topics (AI)* and *Run next pending (no AI)* are
+one-click; every running job has a ⏹ Stop button that kills the process tree. **Attach a video** (🎞 + optional 📝 transcript .json)
 to make the run Mode A — it uploads into `inbox/` and your footage gets repurposed.
 API equivalents: `POST /api/start` `{type:"pending"|"prompt"|"scout", prompt?, id?, format?,
 video?}`, `POST /api/stop {jobId}`, and `POST /api/upload` (raw body + `x-filename` header,
